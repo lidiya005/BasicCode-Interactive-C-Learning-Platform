@@ -1,6 +1,6 @@
 # 🚀 BasicCode: Interactive C++ Learning Platform
 
-[![Watch the Video Showcase](https://img.shields.io/badge/Watch-Video_Showcase-red?style=for-the-badge&logo=youtube)](YOUR_YOUTUBE_LINK_HERE)
+[![Watch the Video Showcase]([https://img.shields.io/badge/Watch-Video_Showcase-red?style=for-the-badge&logo=youtube](https://www.canva.com/design/DAHDMnjjL94/pFkEmV7wLwwp6hx4_Zx0Fg/edit?utm_content=DAHDMnjjL94&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton))](YOUR_YOUTUBE_LINK_HERE)
 
 ## 📖 Overview
 **BasicCode** is an interactive, multimedia-driven learning platform specifically designed to help beginners master C++ programming fundamentals (specifically tailored for course CSC402). 
