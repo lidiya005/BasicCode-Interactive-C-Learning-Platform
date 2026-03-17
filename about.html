@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* --- Jump Section Styles --- */
+.jump-card {
+    background: linear-gradient(135deg, #2ea48d 0%, #258673 100%);
+    border-radius: 25px;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(46, 164, 141, 0.3);
+}
+
+.jump-btn {
+    color: #2ea48d;
+    transition: all 0.3s ease;
+}
+.jump-btn:hover {
+    transform: scale(1.05);
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.jump-bg-icon {
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.1);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+    /* =========================================
+   LOCK POPUP STYLES 
+   ========================================= */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .popup.hidden {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: popIn 0.3s ease-out;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .close-btn:hover {
+      color: #ff4444;
+    }
+
+    .popup-content h3 {
+      color: #e74c3c;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .popup-content p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .popup-btn-ok {
+      background-color: #2ea48d;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .popup-btn-ok:hover {
+      background-color: #258673;
+      transform: translateY(-2px);
+    }
+
+    /* Team Card Styles */
+    .team-preview .team-member {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1000px;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .team-preview .team-member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: #22c55e;
+      background-color: #ffffff;
+    }
+
+    .team-preview .team-member .initial-view {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .team-preview .team-member:hover .initial-view {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    .team-preview .team-member .member-details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 25px;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      transform: rotateX(-90deg);
+      transform-origin: bottom;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .team-preview .team-member:hover .member-details {
+      transform: rotateX(0deg);
+    }
+
+    .team-preview .member-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border: 4px solid var(--accent-color);
+    }
+
+    .team-preview .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-preview h5 {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--heading-color);
+      font-size: 1.25rem;
+    }
+
+    .team-preview span {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .member-details h4 {
+      color: #22c55e;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .member-details ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .member-details ul li {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #555;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .member-details ul li::before {
+      content: "✓";
+      color: #22c55e;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Learning Objectives */
+    .learning-objectives {
+      background-color: #f9fbfb;
+      padding: 80px 0;
+    }
+
+    .objective-card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    .objective-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-number {
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.03);
+      z-index: -1;
+      font-family: var(--heading-font);
+      transition: color 0.3s;
+    }
+
+    .objective-card:hover .card-number {
+      color: rgba(0, 0, 0, 0.08);
+    }
+
+    .objective-card .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .objective-card:hover .icon-wrapper {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .objective-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--heading-color);
+    }
+
+    .objective-card p {
+      font-size: 0.95rem;
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .progress-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .objective-card:hover .progress-line {
+      width: 100%;
+    }
+
+    .card-blue .icon-wrapper { background: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+    .card-blue .progress-line { background: #0d6efd; }
+    .card-teal .icon-wrapper { background: rgba(44, 122, 123, 0.1); color: var(--accent-color); }
+    .card-teal .progress-line { background: var(--accent-color); }
+    .card-orange .icon-wrapper { background: rgba(253, 126, 20, 0.1); color: #fd7e14; }
+    .card-orange .progress-line { background: #fd7e14; }
+    .card-purple .icon-wrapper { background: rgba(111, 66, 193, 0.1); color: #6f42c1; }
+    .card-purple .progress-line { background: #6f42c1; }
+
+    /* Intro Card */
+    .intro-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .code-bg-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.05;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      font-family: monospace;
+      font-size: 5rem;
+      color: var(--heading-color);
+    }
+
+    .bg-accent {
+      background-color: var(--accent-color);
+      color: white;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-title {
+      font-weight: 800;
+      color: var(--heading-color);
+    }
+
+    .highlight-text {
+      color: var(--accent-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight-text::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: rgba(44, 122, 123, 0.2);
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .features-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .feature-pill {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-left: 5px solid transparent;
+      cursor: default;
+    }
+
+    .feature-pill:hover {
+      transform: translateX(-10px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-pill .icon-box {
+      font-size: 2rem;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-pill .text-box h5 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--heading-color);
+    }
+
+    .feature-pill .text-box small {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .pill-video { border-left-color: #ff5722; }
+    .pill-video .icon-box { color: #ff5722; }
+    .pill-notes { border-left-color: #2c7a7b; }
+    .pill-notes .icon-box { color: #2c7a7b; }
+    .pill-quiz { border-left-color: #673ab7; }
+    .pill-quiz .icon-box { color: #673ab7; }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(46, 164, 141, 0.1);
+      color: #2ea48d;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .about .card {
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #ffffff, #f0fdfa);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(46, 164, 141, 0.1) !important;
+    }
+
+    .about .icon-box {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin: 0 auto 15px auto;
+    }
+
+    .about .bi-check-circle-fill {
+      color: #2ea48d;
+    }
+
+    /* Tools & Technologies */
+    .tools-section {
+      background: linear-gradient(to bottom, #ffffff, #f9fbfb);
+    }
+
+    .interactive-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px 30px;
+      height: 100%;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(46, 164, 141, 0.15);
+      border-color: #2ea48d;
+    }
+
+    .interactive-card::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: var(--accent-color);
+      opacity: 0.05;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+    }
+
+    .interactive-card:hover::before {
+      transform: scale(1.5);
+      opacity: 0.1;
+    }
+
+    .interactive-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading-color);
+      margin-bottom: 1rem;
+    }
+
+    .interactive-card p {
+      color: #6c757d;
+      margin-bottom: 2rem;
+    }
+
+    .tech-badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      margin: 0;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 50px;
+      color: #555;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    }
+
+    .tech-badge i {
+      margin-right: 8px;
+      color: #2ea48d;
+      font-size: 1.2rem;
+    }
+
+    .tech-badge:hover {
+      transform: translateY(-3px);
+      border-color: #2ea48d;
+      color: #2ea48d;
+      box-shadow: 0 5px 15px rgba(46, 164, 141, 0.15);
+    }
+
+    .custom-check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .custom-check-list li {
+      margin-bottom: 12px;
+      color: #555;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .custom-check-list li i {
+      color: #2ea48d;
+      font-size: 1.25rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    /* FAQ */
+    #faq .accordion-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    #faq .accordion-button {
+      font-weight: 600;
+      color: #333;
+      background-color: #fff;
+      box-shadow: none;
+      padding: 20px;
+    }
+
+    #faq .accordion-button:not(.collapsed) {
+      color: #2ea48d;
+      background-color: #f0fdfa;
+    }
+
+    #faq .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(46, 164, 141, 0.5);
+    }
+
+    #faq .accordion-body {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Disclaimer */
+    .disclaimer-box {
+      background-color: #f8f9fa;
+      border-left: 5px solid #6c757d;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .disclaimer-box h5 {
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    
+    /* --- General Page Styling --- */
+    .page-title {
+        background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%);
+        padding: 60px 0 40px;
+        margin-bottom: 0;
+    }
+    .text-accent { color: #2ea48d; }
+    
+    /* --- Mission Card --- */
+    .mission-card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .mission-icon {
+        width: 60px; height: 60px;
+        background: rgba(46, 164, 141, 0.1);
+        color: #2ea48d;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    /* --- Timeline Section (New) --- */
+    .timeline-step {
+        position: relative;
+        padding-bottom: 40px;
+        padding-left: 40px;
+        border-left: 2px dashed #ddd;
+    }
+    .timeline-step:last-child { border-left: none; }
+    .timeline-step::before {
+        content: '';
+        position: absolute;
+        left: -10px; top: 0;
+        width: 20px; height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        border: 4px solid #2ea48d;
+    }
+    .timeline-step:hover::before {
+        background: #2ea48d;
+        box-shadow: 0 0 0 5px rgba(46, 164, 141, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    /* --- Team Profile Cards (Redesigned) --- */
+    .team-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        transition: all 0.4s ease;
+        border: 1px solid #f0f0f0;
+        position: relative;
+        overflow: hidden;
+    }
+    .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        border-color: #2ea48d;
+    }
+    .team-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 5px;
+        background: #2ea48d;
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+    .team-card:hover::before { transform: scaleX(1); }
+    
+    .member-img-box {
+        width: 100px; height: 100px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        padding: 5px;
+        background: linear-gradient(45deg, #2ea48d, #a7e2d6);
+    }
+    .member-img-box img {
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+    }
+    .role-badge {
+        background: rgba(46, 164, 141, 0.1);
+        color: #2ea48d;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    .task-list {
+        text-align: left;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .task-list li {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 5px;
+        list-style: none;
+        display: flex;
+        align-items: start;
+    }
+    .task-list li::before {
+        content: "•";
+        color: #2ea48d;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* --- Existing Styles Preserved for Tech Specs --- */
+    .tools-section { background: linear-gradient(to bottom, #ffffff, #f9fbfb); }
+    .interactive-card {
+        background: #ffffff; border-radius: 24px; padding: 40px 30px; height: 100%;
+        text-align: center; position: relative; border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .interactive-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(46, 164, 141, 0.15); border-color: #2ea48d; }
+    .tech-badge-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .tech-badge { display: inline-flex; align-items: center; padding: 10px 20px; margin: 0; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 50px; color: #555; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02); }
+    .tech-badge i { margin-right: 8px; color: #2ea48d; font-size: 1.2rem; }
+    .custom-check-list { list-style: none; padding: 0; margin: 0; display: inline-block; text-align: left; }
+    .custom-check-list li { margin-bottom: 12px; color: #555; font-size: 1rem; display: flex; align-items: center; }
+    .custom-check-list li i { color: #2ea48d; font-size: 1.25rem; margin-right: 12px; flex-shrink: 0; }
+    
+    /* Disclaimer & Popup */
+    .disclaimer-box { background-color: #f8f9fa; border-left: 5px solid #6c757d; padding: 30px; border-radius: 8px; margin-bottom: 30px; }
+    .popup { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    .popup.hidden { display: none; }
+    .popup-content { background: white; padding: 20px; border-radius: 10px; width: 320px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+    .close-btn { float: right; font-size: 20px; cursor: pointer; }
+
+
+  </style>
+</head>
+
+<body class="about-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">BasicCode</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">🏠Start</a></li>
+          <li><a href="module1.html">📘Module 1</a></li>
+          <li><a href="module2.html"> 📗Module 2</a></li>
+          <li><a href="module3.html">📙Module 3</a></li>
+          <li><a href="module4.html">📕Module 4</a></li>
+          <li><a href="about.html">ℹ️About</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="assignment.html">⭐Assignment!</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title display-4 fw-bold">Behind BasicCode</h1>
+              <p class="mb-0 text-muted fs-5">
+                The story, the mission, and the team dedicated to simplifying C++ for everyone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <div class="mission-card p-5 h-100">
+              <div class="mission-icon">
+                <i class="bi bi-lightbulb-fill"></i>
+              </div>
+              <h3 class="fw-bold mb-3">Our Mission</h3>
+              <p class="lead text-muted">
+                To transform the intimidating abstract concepts of C++ programming into 
+                <span class="text-accent fw-bold">visual, interactive, and bite-sized</span> experiences.
+              </p>
+              <p class="text-secondary">
+                We believe that learning to code shouldn't feel like deciphering an ancient language. 
+                By bridging the gap between theory (Official Lecture 03) and practice, we provide a 
+                safe sandbox for students to fail, retry, and master the basics.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <h4 class="fw-bold mb-4 ps-2">The Development Journey</h4>
+            <div class="timeline-step" data-aos="fade-left" data-aos-delay="100">
+              <h5 class="fw-bold">Phase 1: Analysis</h5>
+              <p class="small text-muted mb-0">Analyzed the CSC402 syllabus and identified "Basic Elements" as the biggest hurdle for new students.</p>
+            </div>
+            <div class="timeline-step" data-aos="fade-left" data-aos-delay="200">
+              <h5 class="fw-bold">Phase 2: Design</h5>
+              <p class="small text-muted mb-0">Created storyboards and wireframes. Focused on "Glassmorphism" UI to keep it modern and clean.</p>
+            </div>
+            <div class="timeline-step" data-aos="fade-left" data-aos-delay="300">
+              <h5 class="fw-bold">Phase 3: Development</h5>
+              <p class="small text-muted mb-0">Built the responsive website using Bootstrap 5. Implemented the "Unlocking" logic for gamification.</p>
+            </div>
+            <div class="timeline-step" data-aos="fade-left" data-aos-delay="400">
+              <h5 class="fw-bold text-accent">Phase 4: Launch</h5>
+              <p class="small text-muted mb-0">Final testing and deployment. BasicCode is now live to help you study!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="section bg-light py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header text-center mb-5">
+          <span class="badge bg-white border text-accent px-3 py-2 rounded-pill fw-bold mb-2">The Creators</span>
+          <h2 class="fw-bold">Meet the Development Team</h2>
+          <p class="text-muted">A collaborative effort by three dedicated students.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="team-card">
+              <div class="member-img-box">
+                <img src="assets/img/lidiya.png" alt="Mazlidiya">
+              </div>
+              <h4 class="fw-bold mb-1">Mazlidiya Mazlan</h4>
+              <span class="role-badge">Project Leader</span>
+              <p class="small text-muted">"Ensuring every piece of content aligns with our learning goals."</p>
+              
+              <div class="task-list">
+                <ul>
+                  <li>Project Planning & Coordination</li>
+                  <li>Storyboard Documentation</li>
+                  <li>Content Strategy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="team-card">
+              <div class="member-img-box">
+                <img src="assets/img/izzet.png" alt="Nor Izzeti">
+              </div>
+              <h4 class="fw-bold mb-1">Nor Izzeti Khalid</h4>
+              <span class="role-badge">Web Designer</span>
+              <p class="small text-muted">"Designing interfaces that make code look friendly and fun."</p>
+              
+              <div class="task-list">
+                <ul>
+                  <li>UI/UX Design</li>
+                  <li>Multimedia Integration</li>
+                  <li>Unlocking System Logic</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="team-card">
+              <div class="member-img-box">
+                <img src="assets/img/zaty.png" alt="Nurzaty">
+              </div>
+              <h4 class="fw-bold mb-1">Nurzaty Aqilla</h4>
+              <span class="role-badge">Assessment Lead</span>
+              <p class="small text-muted">"Creating quizzes that challenge logic without causing stress."</p>
+              
+              <div class="task-list">
+                <ul>
+                  <li>Interactive Quiz Design</li>
+                  <li>Scoring Mechanisms</li>
+                  <li>Quality Assurance Testing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section tools-section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header text-center mb-5">
+          <h2 class="fw-bold">Technical Specifications</h2>
+          <p class="text-muted">Built with modern standards for optimal performance.</p>
+        </div>
+
+        <div class="row gy-5 justify-content-center">
+          <div class="col-lg-6 col-md-10" data-aos="fade-right" data-aos-delay="100">
+            <div class="interactive-card">
+              <div class="icon-box mb-3">
+                <i class="bi bi-tools fs-1" style="color: #2ea48d;"></i>
+              </div>
+              <h3>Tools & Technologies</h3>
+              <p>This website was crafted using modern web standards and creative tools.</p>
+              <div class="tech-badge-container">
+                <div class="tech-badge"><i class="bi bi-filetype-html"></i> HTML5 & CSS3</div>
+                <div class="tech-badge"><i class="bi bi-filetype-js"></i> JavaScript</div>
+                <div class="tech-badge"><i class="bi bi-bootstrap"></i> Bootstrap 5</div>
+                <div class="tech-badge"><i class="bi bi-code-slash"></i> VS Code</div>
+                <div class="tech-badge"><i class="bi bi-palette"></i> Canva</div>
+                <div class="tech-badge"><i class="bi bi-film"></i> CapCut</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-10" data-aos="fade-left" data-aos-delay="200">
+            <div class="interactive-card">
+              <div class="icon-box mb-3">
+                <i class="bi bi-globe fs-1" style="color: #2ea48d;"></i>
+              </div>
+              <h3>Platform Compatibility</h3>
+              <p>Designed for accessibility and ease of use across all devices.</p>
+              <ul class="custom-check-list">
+                <li><i class="bi bi-check-circle-fill"></i> Compatible with Windows, Mac, and Linux</li>
+                <li><i class="bi bi-check-circle-fill"></i> Works on Chrome, Edge, and Firefox</li>
+                <li><i class="bi bi-check-circle-fill"></i> No installation required (Web-based)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="disclaimer-box">
+          <h5>📌 Academic Disclaimer</h5>
+          <p class="mb-0 text-muted">
+            This website is developed for <strong>educational purposes only</strong> as part of an academic project for Universiti Teknologi MARA (UiTM). All materials are intended to support learning and do not replace official lecture notes or instructor guidance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section py-5">
+  <div class="container" data-aos="zoom-in">
+    <div class="jump-card text-center text-white">
+      <div class="jump-content">
+        <h2 class="fw-bold mb-3">Enough Theory. Let's Code!</h2>
+        <p class="mb-4 opacity-75 fs-5">Your journey into C++ begins with the anatomy of a program.</p>
+        <a href="module1.html" class="btn btn-light btn-lg rounded-pill px-5 fw-bold shadow-sm jump-btn">
+          Jump to Module 1 <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+      </div>
+      <div class="jump-bg-icon"><i class="bi bi-rocket-takeoff"></i></div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-lg-12">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">BasicCode</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="credits">
+              Designed for CSC402 Programming 1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" id="closePopup">&times;</span>
+      <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
+      <h3 id="popup-title">Module Locked</h3>
+      <p id="popup-message">Please complete the previous module to proceed.</p>
+      <button class="popup-btn-ok" onclick="document.getElementById('popup').classList.add('hidden')">Got it!</button>
+    </div>
+  </div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // 1. SETUP POPUP ELEMENTS
+      const popup = document.getElementById('popup');
+      const popupTitle = document.getElementById('popup-title');
+      const popupMessage = document.getElementById('popup-message');
+      const closePopup = document.getElementById('closePopup');
+
+      // Close popup logic
+      if (closePopup) {
+        closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+      }
+
+      function showLockPopup(title, msg) {
+        popupTitle.innerText = title;
+        popupMessage.innerText = msg;
+        popup.classList.remove('hidden');
+      }
+
+      // 2. CHECK SCORE FROM LOCAL STORAGE
+      // We use localStorage so the browser "remembers" the score from Module 1
+      const mod1Score = parseInt(localStorage.getItem('module1Score')) || 0;
+      const PASS_THRESHOLD = 3; // Minimum score to unlock Module 2
+
+      // 3. LOCKING LOGIC ON NAVIGATION CLICKS
+      // Select Navbar links AND the Test Your Skills button
+      const protectedLinks = document.querySelectorAll('#navmenu a, .btn-getstarted');
+
+      protectedLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+
+          // Ignore empty links or #
+          if (!href || href === '#' || href === 'javascript:void(0)') return;
+
+          // --- RULE 1: MODULE 2 LOCK ---
+          if (href.includes('module2')) {
+            if (mod1Score < PASS_THRESHOLD) {
+              e.preventDefault(); // Stop navigation
+              showLockPopup("Module 2 Locked", "You must score at least 3/5 in Module 1 to unlock this.");
+            }
+          }
+
+          // --- RULE 2: MODULE 3 & 4 LOCK (Hard Locked) ---
+          else if (href.includes('module3') || href.includes('module4')) {
+            e.preventDefault();
+            showLockPopup("Coming Soon", "This module is currently locked until you complete the previous modules.");
+          }
+
+          // --- RULE 3: ASSIGNMENT LOCK ---
+          else if (href.includes('assignment')) {
+            e.preventDefault();
+            showLockPopup("Assignment Locked", "Master all 4 modules before taking the final assignment!");
+          }
+
+          // Note: index.html, about.html, and module1.html are always allowed.
+        });
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>

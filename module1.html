@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Module 1 - BasicCode</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+ /* --- Video Section Styling --- */
+    .video-side-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-summary h3 {
+      color: #007bff;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* --- UIVERSE CODE EDITOR CARDS --- */
+    .code-editor {
+      width: 100%;
+      background-color: #1d1e22;
+      box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 2px;
+      margin-bottom: 25px;
+    }
+
+    .header-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+    }
+
+    .title-card {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1.57px;
+      color: rgb(212 212 212);
+      text-transform: uppercase;
+    }
+
+    .icon-card {
+      width: 20px;
+      transition: .2s ease;
+    }
+
+    .editor-content {
+      margin: 0 15px 15px;
+      color: white;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+    }
+
+    .property { margin-left: 20px; display: block; margin-bottom: 4px; }
+    .color-0 { color: rgb(86 156 214); } 
+    .color-1 { color: rgb(182 206 168); } 
+    .color-2 { color: rgb(156 220 254); } 
+    .color-3 { color: rgb(207 146 120); } 
+    .comment { color: #6a9955; font-style: italic; }
+   /* --- REMOVE TOP GAP --- */
+    .page-title {
+      padding-top: 80px !important; /* Adjusts space below fixed header */
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .heading-title {
+      margin-top: 0 !important; /* Removed the manual 50px margin */
+    }
+
+    .section.py-5:first-of-type {
+      padding-top: 1rem !important; /* Pulls video section closer to title */
+    }
+
+    /* Subtopic Heading Styling */
+    .subtopic-title {
+      color: #007bff;
+      font-weight: 700;
+      margin-bottom: 20px;
+      
+      padding-left: 15px;
+    }
+  
+    /* --- NEW NOTES TITLE STYLE --- */
+    .notes-main-title {
+      font-size: 2.0rem;
+      font-weight: 800;
+      color: #007bff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      position: relative;
+      margin-top: 40px;
+      margin-bottom: 50px;
+    }
+
+    .notes-main-title::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background-color: #007bff;
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+
+    .quiz-container-inner { max-width: 600px; margin: 0 auto; }
+    
+    .quiz-section { 
+      padding: 80px 0; 
+      background: #ffffff; 
+      border-top: 1px solid #eee; 
+      border-bottom: 1px solid #eee;
+      margin-top: 50px;
+    }
+    
+    .quiz-item { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid #007bff; max-width: 600px; margin-left: auto; margin-right: auto;}
+    .quiz-question { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .option-container { display: block; position: relative; padding: 10px 15px 10px 45px; margin-bottom: 10px; cursor: pointer; border: 1px solid #eee; border-radius: 5px; transition: 0.3s; }
+    .option-container:hover { background: #f8f9fa; border-color: #007bff; }
+    .option-container input { position: absolute; opacity: 0; cursor: pointer; }
+    .checkmark { position: absolute; top: 15px; left: 15px; height: 18px; width: 18px; background-color: #eee; border-radius: 50%; }
+    .option-container input:checked ~ .checkmark { background-color: #007bff; }
+    .option-container.correct-answer { background-color: #d4edda !important; border-color: #c3e6cb !important; }
+    .option-container.wrong-answer { background-color: #f8d7da !important; border-color: #f5c6cb !important; }
+    
+    /* Explanation Box Styling */
+    .explanation-text { display: none; margin-top: 15px; padding: 15px; background: #e9f7ef; border-radius: 8px; font-size: 0.95rem; color: #155724; border-left: 3px solid #28a745; }
+
+    .btn-check-quiz { background: #007bff; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+    .btn-check-quiz:hover { background: #0056b3; transform: translateY(-2px); }
+
+    #quiz-result { 
+      margin-top: 30px; 
+      padding: 25px; 
+      border-radius: 12px; 
+      display: none; 
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+    }
+    .score-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; box-shadow: 0 4px 15px rgba(21, 87, 36, 0.1); }
+    .score-warning { background-color: #fff3cd; color: #856404; border-color: #ffeeba; box-shadow: 0 4px 15px rgba(133, 100, 4, 0.1); }
+    
+    .video-wrapper { 
+      background: #000; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+      margin-top: 20px; 
+    }
+    video { display: block; width: 100%; height: auto; }
+    
+    .code-block { background: #272822; color: #f8f8f2; padding: 20px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; margin-bottom: 20px; }
+    
+    .token-card { 
+      border-radius: 15px; 
+      padding: 25px; 
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      cursor: pointer; 
+      height: 100%;
+      border: 2px solid transparent;
+    }
+
+    .token-card:hover {
+      transform: scale(1.08); 
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .token-symbols { background: #f0f3ff; border-color: #007bff; }
+    .token-symbols:hover { border-color: #007bff; box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3); }
+    .token-keywords { background: #fffcf0; border-color: #ffc107; }
+    .token-keywords:hover { border-color: #ffc107; box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3); }
+    .token-identifiers { background: #f0fff4; border-color: #28a745; }
+    .token-identifiers:hover { border-color: #28a745; box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3); }
+
+    /*LOCK STYLE*/
+    .modules {
+  display: flex;
+  gap: 10px;
+}
+
+.module-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.module-btn.locked {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+  </style>
+
+</head>
+
+<body class="properties-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">BasicCode</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">🏠Home</a></li>
+          <li><a href="module1.html" class="active">📘Module 1</a></li>
+          <li><a href="module2.html"> 📗Module 2</a></li>
+          <li><a href="module3.html">📙Module 3</a></li>
+          <li><a href="module4.html">📕Module 4</a></li>
+          <li><a href="about.html">ℹ️About</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="assignment.html">⭐Assignment!</a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title" style="margin-top: 50px;">Mastering Module 1</h1>
+              <p class="mb-0">Program Structure, Tokens & Identifiers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+ <!-- youtube -->
+    <section class="section py-5">
+      <div class="container" data-aos="fade-up">
+        <!-- card -->
+        <div class="row align-items-center video-side-container">
+          <div class="col-lg-7">
+            <video controls>
+              <source src="assets/video/vidModule1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="col-lg-5 video-summary ps-lg-5 mt-4 mt-lg-0">
+            <h3><i class="bi bi-journal-text me-2"></i>Video Overview</h3>
+            <p>
+  Before we write complex logic, we must understand the <strong>"Grammar"</strong> of C++. 
+  In this module, we dissect a program to see its organs (<strong>Structure</strong>), its atoms (<strong>Tokens</strong>), and its naming rules (<strong>Identifiers</strong>).
+</p>
+              <div class="alert alert-info d-inline-block">
+              <i class="bi bi-info-circle-fill me-2"></i> <strong>Goal:</strong> Write a valid, compilable C++ program.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="container text-center">
+        <h2 class="notes-main-title">Notes</h2>
+</div>
+
+<!-- card style -->
+<!-- <section class="section py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row align-items-center video-side-container">
+          <div class="col-lg-7">
+             </div>
+          <div class="col-lg-5 video-summary ps-lg-5 mt-4 mt-lg-0">
+             </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- section 1 -->
+    <section class="section">
+  <div class="container">
+    
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h3 class="subtopic-title text-primary fw-bold">1. Program Structure: The Anatomy</h3>
+      <p>Hover over the concepts on the left to see where they live inside the code.</p>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden" data-aos="fade-up">
+      <div class="row g-0">
+        
+        <div class="col-lg-7 bg-light p-4 p-lg-5 d-flex flex-column justify-content-center">
+          
+          <div class="interactive-item p-3 mb-3 rounded border bg-white shadow-sm" 
+               onmouseenter="highlightCode('part-preprocessor')" 
+               onmouseleave="resetCode()"
+               style="cursor: pointer; transition: 0.3s;">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary me-2">1</span>
+              <h6 class="mb-0 fw-bold">Preprocessor Directives</h6>
+            </div>
+            <p class="small text-muted mb-0">
+              Lines starting with <code>#</code>. They tell the compiler to load libraries (like <code>iostream</code>) before the program starts.
+            </p>
+          </div>
+
+          <div class="interactive-item p-3 mb-3 rounded border bg-white shadow-sm" 
+               onmouseenter="highlightCode('part-main')" 
+               onmouseleave="resetCode()"
+               style="cursor: pointer; transition: 0.3s;">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">2</span>
+              <h6 class="mb-0 fw-bold">The main() Function</h6>
+            </div>
+            <p class="small text-muted mb-0">
+              Every C++ program has exactly one <code>main()</code>. It executes the code and returns an integer (<code>0</code>) to signal success.
+            </p>
+          </div>
+
+          <div class="interactive-item p-3 mb-3 rounded border bg-white shadow-sm" 
+               onmouseenter="highlightCode('part-semicolon')" 
+               onmouseleave="resetCode()"
+               style="cursor: pointer; transition: 0.3s;">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-warning text-dark me-2">3</span>
+              <h6 class="mb-0 fw-bold">Statements & Semicolons</h6>
+            </div>
+            <p class="small text-muted mb-0">
+              The "Full Stop" of programming. Every instruction must end with a <code>;</code> or the program crashes.
+            </p>
+          </div>
+
+          <div class="interactive-item p-3 rounded border bg-white shadow-sm" 
+               onmouseenter="highlightCode('part-whitespace')" 
+               onmouseleave="resetCode()"
+               style="cursor: pointer; transition: 0.3s;">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-info text-dark me-2">4</span>
+              <h6 class="mb-0 fw-bold">White Spaces</h6>
+            </div>
+            <p class="small text-muted mb-0">
+              Spaces, tabs, and newlines. The compiler usually ignores them, but they make code readable for humans.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-5 bg-dark p-4 position-relative d-flex flex-column justify-content-center">
+          
+          <div class="d-flex justify-content-between align-items-center mb-3 text-white-50">
+            <div class="d-flex gap-2">
+              <div class="rounded-circle bg-danger" style="width:12px; height:12px;"></div>
+              <div class="rounded-circle bg-warning" style="width:12px; height:12px;"></div>
+              <div class="rounded-circle bg-success" style="width:12px; height:12px;"></div>
+            </div>
+            <small style="font-family: monospace;">main.cpp</small>
+            <button class="btn btn-sm btn-success fw-bold px-2 py-1" onclick="simulateRun()" style="font-size: 0.8rem;">
+              <i class="bi bi-play-fill"></i> Run
+            </button>
+          </div>
+
+          <div class="code-editor-content" style="font-family: 'Fira Code', monospace; font-size: 14px; color: #abb2bf; line-height: 1.8;">
+            
+            <div id="part-preprocessor" class="code-line transition-line">
+              <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;iostream&gt;</span>
+            </div>
+            <div id="part-preprocessor-2" class="code-line transition-line">
+              <span style="color: #c678dd;">using namespace</span> <span style="color: #e5c07b;">std</span><span style="color: #abb2bf;">;</span>
+            </div>
+            <br>
+            <div id="part-main" class="code-line transition-line">
+              <span style="color: #61afef;">int</span> <span style="color: #98c379;">main</span><span style="color: #abb2bf;">() {</span> <span style="color: #5c6370; font-style: italic;">// Start</span>
+            </div>
+            
+            <div id="part-whitespace" class="code-line transition-line" style="border: 1px dashed transparent;">
+              &nbsp;&nbsp;<span style="color: #5c6370;">// White Space</span>
+            </div>
+
+            <div class="code-line">
+              &nbsp;&nbsp;<span style="color: #e06c75;">cout</span> <span style="color: #56b6c2;">&lt;&lt;</span> <span style="color: #98c379;">"Hi C++"</span><span id="part-semicolon" class="transition-line" style="color: #abb2bf; font-weight: bold; padding: 0 5px;">;</span>
+            </div>
+
+            <div class="code-line">
+              &nbsp;&nbsp;<span style="color: #c678dd;">return</span> <span style="color: #d19a66;">0</span><span id="part-semicolon-2" class="transition-line" style="color: #abb2bf; font-weight: bold; padding: 0 5px;">;</span>
+            </div>
+
+            <div id="part-main-end" class="code-line transition-line">
+              <span style="color: #abb2bf;">}</span>
+            </div>
+
+          </div>
+
+          <div id="console-output" class="mt-3 p-2 rounded" style="background: #000; color: #0f0; font-family: monospace; display: none; border-left: 3px solid #28a745; font-size: 0.85rem;">
+            > Compiling...<br>
+            > Success!<br>
+            Hi C++
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Transition for hover effects */
+  .transition-line {
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+  
+  /* The glow effect when hovered */
+  .highlight-active {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: -5px 0 0 #007bff; /* Blue line on left */
+    padding-left: 10px;
+    color: #fff !important;
+  }
+  
+  /* Dim effect for non-active lines */
+  .dimmed {
+    opacity: 0.3;
+    filter: blur(0.5px);
+  }
+
+  /* Interactive Item Hover State */
+  .interactive-item:hover {
+    background-color: #f8f9fa !important;
+    border-color: #007bff !important;
+    transform: translateX(10px);
+  }
+</style>
+
+<script>
+  function highlightCode(id) {
+    // 1. Dim everything first
+    const allLines = document.querySelectorAll('.code-editor-content > div');
+    allLines.forEach(line => line.classList.add('dimmed'));
+
+    // 2. Highlight specific IDs
+    const target = document.getElementById(id);
+    if(target) {
+      target.classList.remove('dimmed');
+      target.classList.add('highlight-active');
+    }
+
+    // Handle grouped items (like preprocessor having 2 lines)
+    if(id === 'part-preprocessor') {
+       document.getElementById('part-preprocessor-2').classList.remove('dimmed');
+       document.getElementById('part-preprocessor-2').classList.add('highlight-active');
+    }
+    if(id === 'part-main') {
+       document.getElementById('part-main-end').classList.remove('dimmed');
+       document.getElementById('part-main-end').classList.add('highlight-active');
+    }
+    if(id === 'part-semicolon') {
+       // Undim lines that contain semicolons
+       target.parentElement.classList.remove('dimmed');
+       document.getElementById('part-semicolon-2').classList.add('highlight-active');
+       document.getElementById('part-semicolon-2').parentElement.classList.remove('dimmed');
+    }
+    if(id === 'part-whitespace') {
+      target.style.borderColor = "#5c6370"; // Show box for whitespace
+      target.classList.remove('dimmed');
+    }
+  }
+
+  function resetCode() {
+    // Remove all classes
+    const allLines = document.querySelectorAll('.code-editor-content > div');
+    const spans = document.querySelectorAll('.transition-line');
+    
+    allLines.forEach(line => {
+      line.classList.remove('dimmed');
+      line.classList.remove('highlight-active');
+      line.style.borderColor = "transparent";
+    });
+    
+    spans.forEach(span => span.classList.remove('highlight-active'));
+  }
+
+  function simulateRun() {
+    const consoleBox = document.getElementById('console-output');
+    consoleBox.style.display = 'block';
+    consoleBox.innerHTML = "> Compiling...";
+    
+    setTimeout(() => {
+      consoleBox.innerHTML = "> Compiling... Done.<br>> Running...<br><br><strong style='color:white'>Hi C++</strong>";
+    }, 800);
+  }
+</script>
+
+<!-- section 2 -->
+
+    <section class="section bg-light">
+  <div class="container" data-aos="fade-up">
+    
+    <div class="text-center mb-5">
+      <h3 class="subtopic-title text-primary fw-bold">2. The Smallest Units: Tokens</h3>
+      <p class="text-muted">
+        Just as atoms are the building blocks of matter, <strong>Tokens</strong> are the smallest individual units meaningful to the compiler.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      
+      <div class="col-md-4 d-flex">
+        <div class="card shadow-sm border-0 rounded-4 w-100 h-100 token-card" style="transition: transform 0.3s; cursor: default;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-box mb-3 text-primary">
+              <i class="bi bi-hash fs-1"></i>
+            </div>
+            <h5 class="fw-bold text-primary mb-3">Special Symbols</h5>
+            <p class="small text-muted mb-4">
+              Mathematical operators and punctuation marks. Note that a <strong>Blank</strong> space is also considered a special symbol.
+            </p>
+            
+            <div class="bg-light p-3 rounded border text-primary font-monospace fw-bold" style="font-size: 0.9rem;">
+              + &nbsp; - &nbsp; * &nbsp; / &nbsp; ; &nbsp; . &nbsp; ?<br>
+              &lt;= &nbsp; != &nbsp; == &nbsp; >=
+            </div>
+            <p class="mt-2 text-muted" style="font-size: 0.8rem;">
+              <em>Multi-character symbols like <code>!=</code> are treated as one single token.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex">
+        <div class="card shadow-sm border-0 rounded-4 w-100 h-100 token-card" style="transition: transform 0.3s; cursor: default;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-box mb-3 text-warning">
+              <i class="bi bi-key-fill fs-1"></i>
+            </div>
+            <h5 class="fw-bold text-warning mb-3">Word Symbols</h5>
+            <p class="small text-muted mb-4">
+              Also called <strong>Reserved Words</strong>. They are always lowercase and have special meaning. You <strong>cannot</strong> use them as variable names.
+            </p>
+            
+            <div class="bg-light p-3 rounded border text-warning font-monospace fw-bold" style="font-size: 0.9rem; color: #d39e00 !important;">
+              int &nbsp; float &nbsp; double<br>
+              char &nbsp; void &nbsp; return
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex">
+        <div class="card shadow-sm border-0 rounded-4 w-100 h-100 token-card" style="transition: transform 0.3s; cursor: default;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-box mb-3 text-success">
+              <i class="bi bi-tag-fill fs-1"></i>
+            </div>
+            <h5 class="fw-bold text-success mb-3">Identifiers</h5>
+            <p class="small text-muted mb-4">
+              Names for variables, constants, and functions. They can be <strong>Predefined</strong> (like <code>cout</code>) or <strong>User-defined</strong>.
+            </p>
+            
+            <div class="bg-light p-3 rounded border text-success font-monospace fw-bold" style="font-size: 0.9rem;">
+              myValue &nbsp; _temp<br>
+              result2 &nbsp; printData
+            </div>
+            
+            <p class="mt-2 text-muted" style="font-size: 0.8rem;">
+              <em>Best Practice: Use suggestive names (e.g., <code>hourly_rate</code>) rather than just <code>x</code>.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .token-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+  }
+</style>
+
+<!-- section 3 -->
+
+    <section class="section">
+  <div class="container" data-aos="fade-up">
+    
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+      <div class="row g-0 align-items-center">
+        
+        <div class="col-lg-6 p-4 p-lg-5 bg-white">
+          <h3 class="subtopic-title text-primary fw-bold mb-3">3. Naming Rules (The Legalities)</h3>
+          <p class="text-muted mb-4">
+            Identifiers are strict. Following syntax rules is mandatory; breaking them causes compiler errors.
+          </p>
+
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-3 mt-1"></i>
+              <div>
+                <strong>The First Character:</strong> Must be a letter (a-z, A-Z) or an underscore (<code>_</code>). 
+                <span class="d-block text-danger small"><i class="bi bi-x"></i> It cannot start with a number.</span>
+              </div>
+            </li>
+
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-3 mt-1"></i>
+              <div>
+                <strong>Characters Allowed:</strong> Only letters, digits, and underscores.
+                <span class="d-block text-danger small"><i class="bi bi-x"></i> No hyphens (<code>-</code>) or symbols like <code>@, #, %</code>.</span>
+              </div>
+            </li>
+
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-3 mt-1"></i>
+              <div>
+                <strong>No Spaces:</strong> Spaces are <strong>never</strong> allowed.
+                <span class="d-block text-muted small">Use <code>CamelCase</code> or <code>snake_case</code> instead.</span>
+              </div>
+            </li>
+
+            <li class="d-flex align-items-start">
+              <i class="bi bi-exclamation-triangle-fill text-warning fs-5 me-3 mt-1"></i>
+              <div>
+                <strong>Case Sensitivity:</strong> C++ is strict.
+                <span class="d-block text-muted small"><code>taxRate</code> and <code>TAXRATE</code> are two different variables.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6 p-4 p-lg-5 bg-light border-start">
+          <div class="validator-box text-center bg-white p-4 rounded-4 shadow-sm border-top border-4 border-secondary transition-border">
+            
+            <div class="icon-box mb-3 text-primary">
+              <i class="bi bi-cpu fs-1"></i>
+            </div>
+            
+            <h4 class="mb-2 fw-bold">Identifier Validator</h4>
+            <p class="small text-muted mb-4">Type a variable name below to test if it passes the compiler check.</p>
+            
+            <div class="position-relative">
+              <input type="text" id="id-input" class="form-control form-control-lg text-center font-monospace mb-3" 
+                     placeholder="e.g. 2sum, hourly_rate" 
+                     onkeyup="validateIdentifier()" 
+                     style="background: #f8f9fa; border: 2px solid #e9ecef;">
+            </div>
+            
+            <div id="id-status" class="status-msg fw-bold text-muted py-2 rounded" style="min-height: 40px;">
+              Waiting for input...
+            </div>
+
+            <div id="hint-box" class="mt-3 small text-danger" style="display: none;"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+</section>
+
+<script>
+  function validateIdentifier() {
+    const input = document.getElementById('id-input');
+    const msg = document.getElementById('id-status');
+    const hint = document.getElementById('hint-box');
+    const box = document.querySelector('.validator-box');
+    const val = input.value;
+
+    // Reset styles
+    input.style.borderColor = "#e9ecef";
+    box.style.borderTopColor = "#6c757d"; // Gray
+    hint.style.display = "none";
+
+    // Empty State
+    if (val.length === 0) {
+      msg.innerHTML = "Waiting for input...";
+      msg.className = "status-msg fw-bold text-muted py-2";
+      return;
+    }
+
+    // RESERVED WORDS LIST
+    const reservedWords = ['int', 'float', 'double', 'char', 'void', 'return', 'if', 'else', 'while', 'for', 'class', 'true', 'false'];
+
+    // RULES REGEX
+    const startsWithNumber = /^[0-9]/.test(val);
+    const hasSpace = /\s/.test(val);
+    const hasSpecial = /[^a-zA-Z0-9_]/.test(val); // Matches anything NOT letter, digit, underscore
+    const isReserved = reservedWords.includes(val);
+
+    // LOGIC
+    if (startsWithNumber) {
+      setError("Invalid: Cannot start with a number.", "Rule #1 Broken");
+    } 
+    else if (hasSpace) {
+      setError("Invalid: Contains spaces.", "Rule #3 Broken");
+    } 
+    else if (hasSpecial) {
+      setError("Invalid: Contains special symbols (@, -, #, etc).", "Rule #2 Broken: Only _ is allowed.");
+    } 
+    else if (isReserved) {
+      setError("Invalid: This is a Reserved Word.", "Keyword detected!");
+    } 
+    else {
+      // SUCCESS
+      msg.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> Valid Identifier!';
+      msg.className = "status-msg fw-bold text-success py-2 bg-success-subtle rounded";
+      input.style.borderColor = "#198754"; // Green
+      box.style.borderTopColor = "#198754"; // Green Border Top
+    }
+
+    function setError(message, hintText) {
+      msg.innerHTML = `<i class="bi bi-x-circle-fill me-2"></i> ${message}`;
+      msg.className = "status-msg fw-bold text-danger py-2 bg-danger-subtle rounded";
+      input.style.borderColor = "#dc3545"; // Red
+      box.style.borderTopColor = "#dc3545"; // Red Border Top
+      
+      // Optional Hint
+      if(hintText) {
+        hint.innerHTML = hintText;
+        hint.style.display = "block";
+      }
+    }
+  }
+</script>
+
+<style>
+  .transition-border {
+    transition: border-color 0.3s ease;
+  }
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+  }
+</style>
+
+<!-- section 4 -->
+
+<section class="section py-5">
+  <div class="container" data-aos="fade-up">
+    
+    <div class="card shadow-lg border-0 rounded-4 p-4 p-lg-5 bg-white">
+        
+        <div class="text-center mb-5">
+          <h3 class="subtopic-title text-primary fw-bold">4. Essential Concepts & Best Practices</h3>
+          <p class="text-muted">Key takeaways from the lecture notes.</p>
+        </div>
+
+        <div class="row g-4">
+          
+          <div class="col-lg-6">
+            <div class="h-100 p-4 rounded-4 border bg-light position-relative overflow-hidden concept-card">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-square bg-primary text-white rounded-3 p-2 me-3"><i class="bi bi-book-half"></i></div>
+                <h5 class="fw-bold mb-0">The Rules vs. The Meaning</h5>
+              </div>
+              <div class="row">
+                <div class="col-6 border-end">
+                  <span class="badge bg-primary mb-2">Syntax</span>
+                  <p class="small text-muted lh-sm mb-0">The <strong>grammar</strong>. If you break these rules (like missing a <code>;</code>), the code won't compile.</p>
+                </div>
+                <div class="col-6">
+                  <span class="badge bg-info text-dark mb-2">Semantics</span>
+                  <p class="small text-muted lh-sm mb-0">The <strong>logic</strong>. The code might run, but does it do what you intended?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="h-100 p-4 rounded-4 border bg-warning-subtle position-relative overflow-hidden concept-card" style="border-color: #ffe69c !important;">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-square bg-warning text-dark rounded-3 p-2 me-3"><i class="bi bi-exclamation-triangle-fill"></i></div>
+                <h5 class="fw-bold mb-0 text-dark">Predefined Identifiers</h5>
+              </div>
+              <p class="small mb-2 text-dark">Words like <code>cout</code> and <code>cin</code> are <strong>not</strong> reserved words.</p>
+              <div class="bg-white bg-opacity-75 p-3 rounded-3 border border-warning">
+                <small class="fw-bold text-danger"><i class="bi bi-x-circle me-1"></i> Risky Business:</small>
+                <p class="small mb-0 text-muted">You <em>can</em> redefine them, but you shouldn't. It confuses the compiler!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="h-100 p-4 rounded-4 border bg-light position-relative overflow-hidden concept-card">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-square bg-success text-white rounded-3 p-2 me-3"><i class="bi bi-lightbulb-fill"></i></div>
+                <h5 class="fw-bold mb-0">Naming Best Practices</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i><strong>Be Descriptive:</strong> Use <code>hourly_rate</code> instead of <code>x</code>.
+                </li>
+                <li>
+                  <i class="bi bi-rulers text-success me-2"></i><strong>Length Limit:</strong> Keep identifiers under <strong>25 characters</strong> for readability.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="h-100 p-4 rounded-4 border bg-dark text-white position-relative overflow-hidden concept-card">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-square bg-secondary text-white rounded-3 p-2 me-3"><i class="bi bi-chat-text-fill"></i></div>
+                <h5 class="fw-bold mb-0 text-white">Documentation</h5>
+              </div>
+              <p class="small text-white-50 mb-2">Use comments to explain your logic. The compiler ignores them.</p>
+              <div class="p-2 rounded bg-black font-monospace small" style="border-left: 3px solid #6c757d;">
+                <span class="text-success">// This is a single line comment</span><br>
+                <span class="text-primary">int</span> age; <span class="text-success">// Variable for age</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+    <div class="p-4 rounded-4 border border-2 border-primary bg-white text-dark position-relative overflow-hidden concept-card shadow-sm">
+      <div class="row align-items-center">
+        <div class="col-md-2 text-center text-md-start mb-3 mb-md-0">
+          <i class="bi bi-pc-display fs-1 text-primary"></i>
+        </div>
+        <div class="col-md-10">
+          <h5 class="fw-bold text-dark">What exactly is a Program?</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <small class="d-block text-primary fw-bold text-uppercase">Computer Program</small>
+              <span class="small text-secondary">A sequence of statements designed to accomplish a specific task.</span>
+            </div>
+            <div class="col-md-6">
+              <small class="d-block text-primary fw-bold text-uppercase">Programming Language</small>
+              <span class="small text-secondary">The set of rules, symbols, and special words used to write those programs.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+        </div> </div> 
+    </div>
+</section>
+
+<style>
+  /* Hover Animation for Cards */
+  .concept-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .concept-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: #007bff !important;
+    z-index: 2;
+  }
+  .icon-square {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+</style>
+
+<!-- QUIZZ SECTION -->
+
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-container-inner">
+          <div class="section-title text-center" data-aos="fade-up">
+            <h2 style="color: #007bff;">Module 1 Knowledge Check</h2>
+            <p>Test your understanding of C++ basics below.</p>
+          </div>
+
+          <form id="quizForm" data-aos="fade-up" data-aos-delay="100">
+            
+            <div class="quiz-item">
+              <p class="quiz-question">1. Which function must exist in every C++ program?</p>
+              <label class="option-container">A. start()
+                <input type="radio" name="q1" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">B. program()
+                <input type="radio" name="q1" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">C. main()
+                <input type="radio" name="q1" value="correct">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">D. execute()
+                <input type="radio" name="q1" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <div class="explanation-text"><strong>Explanation:</strong> Every C++ program must have exactly one function named <code>main()</code>. This is where the program execution starts.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">2. Which of the following is a C++ reserved word?</p>
+              <label class="option-container">A. sum
+                <input type="radio" name="q2" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">B. value
+                <input type="radio" name="q2" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">C. int
+                <input type="radio" name="q2" value="correct">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">D. total
+                <input type="radio" name="q2" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <div class="explanation-text"><strong>Explanation:</strong> <code>int</code> is a keyword used to define integer variables. <code>sum</code>, <code>value</code>, and <code>total</code> are typically identifiers chosen by programmers.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">3. Which of the following is a valid identifier in C++?</p>
+              <label class="option-container">A. 2number
+                <input type="radio" name="q3" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">B. total-sum
+                <input type="radio" name="q3" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">C. total_sum
+                <input type="radio" name="q3" value="correct">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">D. total sum
+                <input type="radio" name="q3" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <div class="explanation-text"><strong>Explanation:</strong> Identifiers cannot start with a number (2number), cannot contain hyphens (total-sum), and cannot contain spaces (total sum). Underscores (_) are allowed.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">4. C++ identifiers are case-sensitive. Which statement is TRUE?</p>
+              <label class="option-container">A. value and Value refer to the same variable
+                <input type="radio" name="q4" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">B. VALUE and value are different identifiers
+                <input type="radio" name="q4" value="correct">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">C. Uppercase letters are not allowed
+                <input type="radio" name="q4" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">D. Only lowercase letters can be used
+                <input type="radio" name="q4" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <div class="explanation-text"><strong>Explanation:</strong> C++ is case-sensitive, meaning it treats <code>VALUE</code> and <code>value</code> as two completely separate variables.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">5. Which of the following best describes a token in C++?</p>
+              <label class="option-container">A. A complete C++ program
+                <input type="radio" name="q5" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">B. A comment in the program
+                <input type="radio" name="q5" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">C. The smallest individual unit in a program
+                <input type="radio" name="q5" value="correct">
+                <span class="checkmark"></span>
+              </label>
+              <label class="option-container">D. A function name only
+                <input type="radio" name="q5" value="wrong">
+                <span class="checkmark"></span>
+              </label>
+              <div class="explanation-text"><strong>Explanation:</strong> A token is the smallest individual element of a C++ program that is meaningful to the compiler, such as keywords, symbols, and identifiers.</div>
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn-check-quiz" onclick="validateQuiz()">Check My Answers</button>
+              <div id="quiz-result"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-lg-12">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">BasicCode</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="credits">
+              Designed for CSC402 Programming 1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<!-- LOCK SECTION -->
+<!-- Pop-up -->
+<div id="popup" class="popup hidden">
+  <div class="popup-content">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <h3 id="popup-title"></h3>
+    <p id="popup-message"></p>
+  </div>
+</div>
+
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+<!--NO STORAGE-->
+<!--
+ <script>
+AOS.init();
+
+// ===== QUIZ VALIDATION =====
+function validateQuiz() {
+  const form = document.getElementById('quizForm');
+  const resultDiv = document.getElementById('quiz-result');
+  const checkBtn = document.querySelector('.btn-check-quiz');
+  let score = 0;
+  const totalQuestions = 5;
+
+  // Reset visuals
+  const options = document.querySelectorAll('.option-container');
+  options.forEach(opt => opt.classList.remove('correct-answer', 'wrong-answer'));
+  document.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+
+  // Score calculation
+  for (let i = 1; i <= totalQuestions; i++) {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const allInQuestion = form.querySelectorAll(`input[name="q${i}"]`);
+    const quizItem = allInQuestion[0].closest('.quiz-item');
+    const explanation = quizItem.querySelector('.explanation-text');
+    explanation.style.display = 'block';
+
+    allInQuestion.forEach(input => {
+      if (input.value === 'correct') input.parentElement.classList.add('correct-answer');
+    });
+
+    if (selected) {
+      if (selected.value === 'correct') score++;
+      else selected.parentElement.classList.add('wrong-answer');
+    }
+  }
+
+  // Show results
+  resultDiv.style.display = 'block';
+  if (score === totalQuestions) {
+    resultDiv.className = 'score-success';
+    resultDiv.innerHTML = `🎉 Perfect! You got ${score} out of ${totalQuestions}!`;
+  } else if (score >= 3) {
+    resultDiv.className = 'score-success';
+    resultDiv.innerHTML = `👏 Great job! You scored ${score} out of ${totalQuestions}.`;
+  } else {
+    resultDiv.className = 'score-warning';
+    resultDiv.innerHTML = `😅 You scored ${score} out of ${totalQuestions}. You need at least 3 to pass. Try again!`;
+
+    // 🔁 Change button to "Try Again"
+    checkBtn.textContent = 'Try Again';
+    checkBtn.onclick = resetQuiz;
+  }
+
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Save quiz progress for module unlocking (session-only)
+  completeQuiz(1, score);
+}
+
+// ===== QUIZ RESET FUNCTION =====
+function resetQuiz() {
+  const form = document.getElementById('quizForm');
+  const resultDiv = document.getElementById('quiz-result');
+  const checkBtn = document.querySelector('.btn-check-quiz');
+
+  // Clear selections
+  form.querySelectorAll('input[type="radio"]').forEach(input => (input.checked = false));
+
+  // Hide explanations and remove highlights
+  form.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+  form.querySelectorAll('.option-container').forEach(opt =>
+    opt.classList.remove('correct-answer', 'wrong-answer')
+  );
+
+  // Hide result and restore button
+  resultDiv.style.display = 'none';
+  checkBtn.textContent = 'Check My Answers';
+  checkBtn.onclick = validateQuiz;
+
+  // Scroll to top of quiz
+  form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ===== POPUP SETUP =====
+const popup = document.getElementById('popup');
+const popupTitle = document.getElementById('popup-title');
+const popupMessage = document.getElementById('popup-message');
+const closePopup = document.getElementById('closePopup');
+closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+
+function showPopup(title, message) {
+  popupTitle.textContent = title;
+  popupMessage.textContent = message;
+  popup.classList.remove('hidden');
+}
+
+// ===== LOCKING LOGIC (session-only) =====
+let module1Score = 0;
+let module1Answered = false;
+
+function completeQuiz(moduleNumber, score) {
+  if (moduleNumber === 1) {
+    module1Answered = true;
+    module1Score = score;
+    // Session-only, no localStorage
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all module links AND the assignment button
+  const linksToLock = document.querySelectorAll('#navmenu a, .btn-getstarted');
+
+  linksToLock.forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href) return;
+
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    if (href.includes('module2') && (module1Score < 3 || !module1Answered)) {
+      showPopup('Module Locked', 'Please complete Module 1 quiz to unlock Module 2.');
+      return;
+    }
+
+    if ((href.includes('module3') || href.includes('module4'))) {
+      showPopup('Module Locked', 'This module is locked until you complete the previous modules.');
+      return;
+    }
+
+    if (href.includes('assignment')) {
+        showPopup("Assignment is locked until all modules are completed.");
+        return;
+      }
+
+    // If unlocked, go to page
+    window.location.href = href;
+  });
+});
+});
+</script>
+-->
+
+<!--WITH STORAGE-->
+ 
+<script>
+  AOS.init();
+
+  // ===== QUIZ VALIDATION =====
+  function validateQuiz() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+    let score = 0;
+    const totalQuestions = 5;
+    let allAnswered = true;
+
+    // 1. Check if all questions are answered
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        allAnswered = false;
+        break;
+      }
+    }
+
+    if (!allAnswered) {
+      alert("Please answer all questions before checking.");
+      return; // Stop execution here so answers aren't revealed
+    }
+
+    // 2. Reset visuals (clear previous colors)
+    const options = document.querySelectorAll('.option-container');
+    options.forEach(opt => opt.classList.remove('correct-answer', 'wrong-answer'));
+    document.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+
+    // 3. Calculate Score & Show Answers
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      const allInQuestion = form.querySelectorAll(`input[name="q${i}"]`);
+      const quizItem = allInQuestion[0].closest('.quiz-item');
+      const explanation = quizItem.querySelector('.explanation-text');
+      
+      // Reveal explanation
+      explanation.style.display = 'block';
+
+      // Always highlight the correct answer Green
+      allInQuestion.forEach(input => {
+        if (input.value === 'correct') {
+            input.parentElement.classList.add('correct-answer');
+        }
+      });
+
+      // Check user's choice
+      if (selected) {
+        if (selected.value === 'correct') {
+          score++;
+        } else {
+          // If wrong, highlight selected Red
+          selected.parentElement.classList.add('wrong-answer');
+        }
+      }
+    }
+
+    // 4. Show Results & Handle Next Steps
+    resultDiv.style.display = 'block';
+    
+    if (score >= 3) {
+      // --- PASSED ---
+      resultDiv.className = 'score-success';
+      resultDiv.innerHTML = `
+        <h4>🎉 Congratulations!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You have mastered Module 1.</p>
+        <a href="module2.html" class="btn btn-success mt-2">Go to Module 2 ➡️</a>
+      `;
+      
+      // Hide the check button so they don't click it again
+      checkBtn.style.display = 'none';
+
+      // Save progress
+      completeQuiz(1, score);
+
+    } else {
+      // --- FAILED ---
+      resultDiv.className = 'score-warning';
+      resultDiv.innerHTML = `
+        <h4>😅 Almost there!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You need at least 3 to pass.</p>
+      `;
+
+      // Change button to "Try Again"
+      checkBtn.textContent = 'Try Again';
+      checkBtn.onclick = resetQuiz;
+    }
+
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ===== QUIZ RESET FUNCTION =====
+  function resetQuiz() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+
+    // Clear selections
+    form.querySelectorAll('input[type="radio"]').forEach(input => (input.checked = false));
+
+    // Hide explanations and remove highlights
+    form.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+    form.querySelectorAll('.option-container').forEach(opt =>
+      opt.classList.remove('correct-answer', 'wrong-answer')
+    );
+
+    // Hide result and restore button
+    resultDiv.style.display = 'none';
+    checkBtn.textContent = 'Check My Answers';
+    checkBtn.style.display = 'inline-block'; // Make sure it's visible
+    checkBtn.onclick = validateQuiz; // Re-bind original function
+
+    // Scroll to top of quiz
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ===== POPUP SETUP =====
+  const popup = document.getElementById('popup');
+  const popupTitle = document.getElementById('popup-title');
+  const popupMessage = document.getElementById('popup-message');
+  const closePopup = document.getElementById('closePopup');
+  if(closePopup) {
+      closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+  }
+
+  function showPopup(title, message) {
+    if(popupTitle) popupTitle.textContent = title;
+    if(popupMessage) popupMessage.textContent = message;
+    if(popup) popup.classList.remove('hidden');
+  }
+
+  // ===== LOCKING LOGIC (with localStorage) =====
+  let module1Score = 0;
+  let module1Answered = false;
+
+  function completeQuiz(moduleNumber, score) {
+    if (moduleNumber === 1) {
+      module1Answered = true;
+      module1Score = score;
+      // Save progress in localStorage
+      localStorage.setItem('module1Answered', 'true');
+      localStorage.setItem('module1Score', score);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Load saved progress from localStorage
+    module1Answered = localStorage.getItem('module1Answered') === 'true';
+    module1Score = parseInt(localStorage.getItem('module1Score')) || 0;
+
+    // Select all module links AND the assignment button
+    const linksToLock = document.querySelectorAll('#navmenu a, .btn-getstarted');
+
+    linksToLock.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      link.addEventListener('click', e => {
+        // Allow home and current page
+        if(href.includes('index.html') || href.includes('module1.html') || href.includes('about.html')) return;
+
+        // Only Module 2 unlocks with Module 1 completion
+        if (href.includes('module2')) {
+             if (module1Score < 3 || !module1Answered) {
+                e.preventDefault();
+                showPopup('Module Locked', 'Please complete Module 1 quiz to unlock Module 2.');
+                return;
+             }
+        }
+
+        // Other modules & assignment remain locked for now (customize as needed)
+        if (href.includes('module3') || href.includes('module4')) {
+           e.preventDefault();
+           showPopup('Module Locked', 'This module is locked until you complete the previous modules.');
+           return;
+        }
+
+        if (href.includes('assignment')) {
+           e.preventDefault();
+           showPopup("Assignment is locked", "Assignment is locked until all modules are completed.");
+           return;
+        }
+
+        // If unlocked, allow default behavior (navigation)
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>

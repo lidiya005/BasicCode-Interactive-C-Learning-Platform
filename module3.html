@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Module 3 - BasicCode</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&family=Raleway:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* --- Layout Fixes --- */
+    .page-title { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    .section.py-5:first-of-type { padding-top: 1rem !important; }
+
+    /* --- The Card Style --- */
+    .video-side-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      height: 100%;
+      margin-bottom: 30px;
+    }
+
+    /* Video */
+    video { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .video-summary h3 { color: #ff7b00; font-weight: 700; margin-bottom: 15px; }
+
+    /* --- Code Editor (Black Box) Styling --- */
+    .code-editor {
+      background-color: #1d1e22;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-family: 'Fira Code', monospace;
+      color: #dcdcdc;
+      border: 1px solid #333;
+      font-size: 0.9rem;
+    }
+    .header-card {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px;
+    }
+    .title-card {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px;
+      color: #aaa; text-transform: uppercase; letter-spacing: 1px;
+    }
+    
+    /* Syntax Highlighting */
+    .color-0 { color: #569cd6; } /* Keywords (int, double) */
+    .color-1 { color: #b5cea8; } /* Numbers */
+    .color-2 { color: #9cdcfe; } /* Variables/Ops */
+    .comment { color: #6a9955; font-style: italic; }
+
+    /* --- Interactive Demo Box --- */
+    .demo-box {
+      background: #f8f9fa; border: 2px dashed #ff7b00; border-radius: 10px; padding: 20px; text-align: center; height: 100%;
+    }
+    .btn-run { background: #ff7b00; color: white; border: none; padding: 8px 20px; border-radius: 5px; font-weight: 600; margin-top: 10px; }
+    .btn-run:hover { background: #e66e00; color: white; }
+    .output-screen { background: #000; color: #0f0; font-family: monospace; padding: 10px; border-radius: 5px; margin-top: 10px; text-align: left; display: none; white-space: pre-wrap; font-size: 0.85rem; }
+
+    /* --- Section Headers --- */
+    .section-header { color: #ff7b00; font-weight: 700; margin-bottom: 15px; }
+    .detail-text { font-size: 0.95rem; line-height: 1.6; color: #444; }
+
+    /* --- TITLES (RESTORED) --- */
+    .notes-main-title {
+      font-weight: 800; color: #ff7b00; text-transform: uppercase;
+      letter-spacing: 2px; margin-bottom: 40px; position: relative; display: inline-block;
+    }
+    .notes-main-title::after {
+      content: ''; position: absolute; width: 50%; height: 4px;
+      background: #ff7b00; bottom: -10px; left: 25%; border-radius: 2px;
+    }
+
+    /* --- Mac Style Cards (for Logic) --- */
+    .card {
+      width: 100%; padding: 20px;
+      border: 1px solid #0d1117; border-radius: 10px; background-color: #000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); position: relative;
+    }
+    .mac-header { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+    .mac-header span { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+    .mac-header .red { background-color: #ff5f57; }
+    .mac-header .yellow { background-color: #ffbd2e; }
+    .mac-header .green { background-color: #28c941; }
+    .card-title { font-size: 18px; font-weight: bold; margin: 0 0 10px; color: #e6e6ef; }
+    .card-description { font-size: 14px; color: #aaa; margin-bottom: 15px; }
+    .card .card-tag { display: inline-block; font-size: 10px; border-radius: 5px; background-color: #161b22; padding: 4px; margin-bottom: 12px; margin-right: 5px; color: #dcdcdc; border: 1px solid #30363d; }
+
+    /* --- Quiz CSS (Preserved) --- */
+    .quiz-container-inner { max-width: 600px; margin: 0 auto; }
+    .quiz-section { padding: 80px 0; background: #ffffff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-top: 50px; }
+    .quiz-item { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid #ff7b00; max-width: 600px; margin-left: auto; margin-right: auto;}
+    .quiz-question { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .option-container { display: block; position: relative; padding: 10px 15px 10px 45px; margin-bottom: 10px; cursor: pointer; border: 1px solid #eee; border-radius: 5px; transition: 0.3s; }
+    .option-container:hover { background: #f8f9fa; border-color: #ff7b00; }
+    .option-container input { position: absolute; opacity: 0; cursor: pointer; }
+    .checkmark { position: absolute; top: 15px; left: 15px; height: 18px; width: 18px; background-color: #eee; border-radius: 50%; }
+    .option-container input:checked ~ .checkmark { background-color: #ff7b00; }
+    .option-container.correct-answer { background-color: #d4edda !important; border-color: #c3e6cb !important; }
+    .option-container.wrong-answer { background-color: #f8d7da !important; border-color: #f5c6cb !important; }
+    .explanation-text { display: none; margin-top: 15px; padding: 15px; background: #e9f7ef; border-radius: 8px; font-size: 0.95rem; color: #155724; border-left: 3px solid #28a745; }
+    .btn-check-quiz { background: #ff7b00; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+    #quiz-result { margin-top: 30px; padding: 25px; border-radius: 12px; display: none; text-align: center; font-size: 1.25rem; font-weight: 700; border: 2px solid transparent; transition: all 0.4s ease; }
+    .score-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+    .score-warning { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+
+    /* Lock Popup */
+    .popup { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    .popup.hidden { display: none; }
+    .popup-content { background: white; padding: 20px; border-radius: 10px; width: 320px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+    .close-btn { float: right; font-size: 20px; cursor: pointer; }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">BasicCode</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">🏠Home</a></li>
+          <li><a href="module1.html">📘Module 1</a></li>
+          <li><a href="module2.html">📗Module 2</a></li>
+          <li><a href="module3.html" class="active">📙Module 3</a></li>
+          <li><a href="module4.html">📕Module 4</a></li>
+          <li><a href="about.html">ℹ️About</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="assignment.html">⭐Assignment</a>
+    </div>
+  </header>
+
+  <main class="main">
+    
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Mastering Module 3</h1>
+              <p class="mb-0">Operators & Expressions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row align-items-center video-side-container">
+          <div class="col-lg-7">
+            <video controls>
+              <source src="assets/video/module3_video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="col-lg-5 video-summary ps-lg-5 mt-4 mt-lg-0">
+            <h3><i class="bi bi-journal-text me-2"></i>Video Overview</h3>
+            <p>Unlock the math and logic behind C++. You’ll master <strong>arithmetic operators</strong>, the tricky <strong>Integer Division</strong>, correct <strong>Order of Operations</strong>, and <strong>Logical Operators</strong>.</p>
+            <div class="alert alert-info d-inline-block">
+              <i class="bi bi-info-circle-fill me-2"></i> <strong>Goal:</strong> Mastering Math & Logic.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container text-center mt-5">
+      <h2 class="notes-main-title">Notes</h2>
+    </div>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="video-side-container">
+          <div class="row align-items-center">
+            
+            <div class="col-lg-6 ps-lg-4">
+              <h4 class="section-header">1. Arithmetic Operators & Expressions</h4>
+              <p class="detail-text">
+                C++ provides five basic arithmetic operators. These are <strong>binary operators</strong> because they require two operands.
+              </p>
+              
+              <div class="code-editor">
+                <div class="header-card">
+                  <span class="title-card">Arithmetic.cpp</span>
+                </div>
+                <code>
+                  <p><span class="color-0">int</span> a = <span class="color-1">7</span> / <span class="color-1">2</span>; <span class="comment">// Result: 3</span></p>
+                  <p><span class="color-0">double</span> b = <span class="color-1">7.0</span> / <span class="color-1">2</span>; <span class="comment">// Result: 3.5</span></p>
+                  <p><span class="color-0">int</span> r = <span class="color-1">17</span> % <span class="color-1">3</span>; <span class="comment">// Result: 2</span></p>
+                </code>
+              </div>
+
+              <ul class="detail-text small">
+                <li><strong>Integral Division (/):</strong> Integers drop remainder (e.g., 7 / 2 is 3).</li>
+                <li><strong>Floating-point Division:</strong> If one operand is float/double, result is decimal (e.g., 7.0 / 2 is 3.5).</li>
+                <li><strong>Modulus (%):</strong> Returns remainder. Integers only.</li>
+              </ul>
+              
+              <div class="alert alert-warning mt-2 small p-2">
+                <strong>⚠️ Caution on Divide Rules:</strong><br>
+                <code>5 / 2 = 2</code> (Decimals lost).<br>
+                <code>5.0 / 2 = 2.5</code> (Double operand makes result double).
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="demo-box">
+                <h5>Interactive Test Run</h5>
+                <p class="small text-muted">See the output of Arithmetic Operators</p>
+                <div class="code-editor" style="height: auto; text-align: left; padding:15px;">
+<code style="white-space: pre-wrap;">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 10, b = 5;
+    cout &lt;&lt; "|a + b = " &lt;&lt; (a + b) &lt;&lt; "| ";
+    cout &lt;&lt; "|a - b = " &lt;&lt; (a - b) &lt;&lt; "| ";
+    cout &lt;&lt; "|a * b = " &lt;&lt; (a * b) &lt;&lt; "| ";
+    cout &lt;&lt; "|a / b = " &lt;&lt; (a / b) &lt;&lt; "| ";
+    return 0;
+}</code>
+                </div>
+                <button class="btn-run" onclick="runSection('arith')">Run</button>
+                <div id="output-arith" class="output-screen"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="video-side-container">
+          <div class="row align-items-center">
+            
+            <div class="col-lg-6 ps-lg-4">
+              <h4 class="section-header">2. Increment & Decrement Operators</h4>
+              <p class="detail-text">These are <strong>unary operators</strong> that add or subtract 1 from a single variable.</p>
+              
+              <div class="code-editor">
+                <div class="header-card">
+                  <span class="title-card">Inc_Dec.cpp</span>
+                </div>
+                <code>
+                  <p><span class="color-0">int</span> x = <span class="color-1">10</span>;</p>
+                  <p><span class="color-2">++x;</span> <span class="comment">// x is now 11 (Pre)</span></p>
+                  <p><span class="color-2">x--;</span> <span class="comment">// x is back to 10 (Post)</span></p>
+                </code>
+              </div>
+
+              <ul class="detail-text small">
+                <li><strong>Pre-increment (<code>++x</code>):</strong> Updates the value <em>immediately</em> before use.</li>
+                <li><strong>Post-increment (<code>x++</code>):</strong> Uses the current value first, then updates it <em>afterward</em>.</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="demo-box">
+                <h5>Interactive Test Run</h5>
+                <p class="small text-muted">Visualizing Pre vs Post Increment</p>
+                <div class="code-editor" style="height: auto; text-align: left; padding:15px;">
+<code style="white-space: pre-wrap;">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int x = 10;
+    cout &lt;&lt; "x++ = " &lt;&lt; x++ &lt;&lt; " | ";
+    cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; " | ";
+    cout &lt;&lt; "++x = " &lt;&lt; ++x &lt;&lt; endl;
+    return 0;
+    
+}</code>
+                </div>
+                <button class="btn-run" onclick="runSection('incdec')">Run</button>
+                <div id="output-incdec" class="output-screen"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        
+        <div class="video-side-container">
+          <h4 class="section-header text-center mb-4">3. Precedence & Relational</h4>
+          <p class="text-center text-muted mb-4">Input numbers below to see how C++ evaluates the Order of Precedence and Relational logic.</p>
+
+          <div class="row g-5">
+            
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-primary">Order of Precedence</h5>
+              <p class="detail-text small">C++ follows a specific <strong>Hierarchy of Operations</strong>. Operators with higher precedence are evaluated first. If equal, they use <strong>associativity</strong> (usually left to right).</p>
+              <ol class="detail-text small">
+                <li><strong>( )</strong>: Highest priority.</li>
+                <li><strong>*, /, %</strong>: Equal priority, evaluated L to R.</li>
+                <li><strong>+, -</strong>: Lowest priority, evaluated L to R.</li>
+              </ol>
+              <div class="code-editor p-2 mb-4">
+                <code class="small" style="color:white;">result = 5 + 2 * 4;<br><span class="comment">// 1. 2 * 4 = 8</span><br><span class="comment">// 2. 5 + 8 = 13</span></code>
+              </div>
+
+              <h5 class="fw-bold text-success pt-3 border-top">Relational Operators</h5>
+              <p class="detail-text small">Compare two values. Returns a <strong>Boolean value</strong>:</p>
+              <ul class="detail-text small">
+                <li><strong>1 (True):</strong> Condition met. (Non-zero is true).</li>
+                <li><strong>0 (False):</strong> Condition not met.</li>
+              </ul>
+              <div class="code-editor p-2">
+                <code class="small" style="color:white;">a == b <span class="comment">// Equal to</span><br>a != b <span class="comment">// Not equal to</span><br>a <= b <span class="comment">// Less/Equal</span></code>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="bg-light p-4 rounded border h-100">
+                
+                <div class="card mb-4 p-3 bg-white border text-dark">
+                  <strong class="mb-2 text-primary">Order of Precedence</strong>
+                  <small class="text-muted d-block mb-2">Expression: result = A + B * C</small>
+                  <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">A</span><input type="number" id="precA" class="form-control" value="5">
+                    <span class="input-group-text">B</span><input type="number" id="precB" class="form-control" value="2">
+                    <span class="input-group-text">C</span><input type="number" id="precC" class="form-control" value="4">
+                  </div>
+                  <button class="btn btn-primary btn-sm w-100 mb-2" onclick="simulatePrecedence()">Run Precedence</button>
+                  <div id="prec-output" class="code-editor p-2" style="background:#1d1e22;"><code id="prec-text" class="small"><span class="comment">// Result here...</span></code></div>
+                </div>
+
+                <div class="card p-3 bg-white border text-dark">
+                  <strong class="mb-2 text-success">Relational Operators</strong>
+                  <small class="text-muted d-block mb-2">Compare X and Y:</small>
+                  <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">X</span><input type="number" id="relX" class="form-control" value="10">
+                    <span class="input-group-text">Y</span><input type="number" id="relY" class="form-control" value="20">
+                  </div>
+                  <button class="btn btn-success btn-sm w-100 mb-2" onclick="simulateRelational()">Run Relational</button>
+                  <div id="rel-output" class="code-editor p-2" style="background:#1d1e22;"><code id="rel-text" class="small"><span class="comment">// Result here...</span></code></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="video-side-container">
+          <h4 class="section-header text-center mb-4">4. Logical Operators & Compound Assignment</h4>
+          <p class="text-center text-muted mb-4">Interact with the cards below to see how these operators work in real-time.</p>
+
+          <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-6 d-flex justify-content-center">
+              <div class="card h-100">
+                <div class="mac-header"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+                <span class="card-title">Logical Operators</span>
+                <p class="card-description">Combine multiple relational expressions into a single condition.</p>
+                <div>
+                  <span class="card-tag">&& (AND): Both true</span> 
+                  <span class="card-tag">|| (OR): At least one true</span>
+                  <span class="card-tag">! (NOT): Reverse</span>
+                </div>
+                <div class="p-2 mb-2 bg-dark rounded border border-secondary mt-3">
+                   <small class="text-info d-block mb-1">Current State: A = true, B = false</small>
+                   <button class="btn btn-outline-light btn-sm w-100" onclick="runLogicalDemo()">Run Logic Check</button>
+                </div>
+                <div class="code-editor" style="height: auto; min-height: 120px;">
+                  <div class="editor-content">
+                     <code id="logical-output"><p class="comment">// Click Run to see evaluations...</p></code>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 d-flex justify-content-center">
+              <div class="card h-100">
+                <div class="mac-header"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+                <span class="card-title">Compound Assignment</span>
+                <p class="card-description">Concise way to update variables. Arithmetic + Assignment (=).</p>
+                <div>
+                  <span class="card-tag">+= (Add & Assign)</span>
+                  <span class="card-tag">-= (Sub & Assign)</span>
+                  <span class="card-tag">*= (Mult & Assign)</span>
+                </div>
+                <div class="p-2 mb-2 bg-dark rounded border border-secondary mt-3">
+                   <div class="input-group input-group-sm mb-2">
+                      <span class="input-group-text bg-secondary text-white border-0">Enter Number (x)</span>
+                      <input type="number" id="compoundInput" class="form-control" value="10">
+                   </div>
+                   <button class="btn btn-outline-light btn-sm w-100" onclick="runCompoundDemo()">Run Assignment</button>
+                </div>
+                <div class="code-editor" style="height: auto; min-height: 120px;">
+                  <div class="editor-content">
+                     <code id="compound-output"><p class="comment">// Enter a number and click Run...</p></code>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-container-inner">
+          <div class="section-title text-center" data-aos="fade-up">
+            <h2 style="color: #ff7b00;">Module 3 Knowledge Check</h2>
+            <p>Answer the following multiple-choice questions to test your understanding.</p>
+          </div>
+
+          <form id="quizForm" data-aos="fade-up" data-aos-delay="100">
+            <div class="quiz-item">
+              <p class="quiz-question">1. What is the result of the expression 5 / 2?</p>
+              <label class="option-container">A. 2.5<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. 3<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. 2<input type="radio" name="q1" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. 0<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> In C++, when you divide two integers, the fractional part is discarded (truncated). Although the mathematical result is <code>2.5</code>, the integer result is <code>2</code>.</div>
+            </div>
+            <div class="quiz-item">
+              <p class="quiz-question">2. Which operator is used for remainder in C++?</p>
+              <label class="option-container">A. /<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. %<input type="radio" name="q2" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">C. *<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">D. ++<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong>The modulus operator <code>%</code> returns the remainder of an integer division. For example, <code>5 % 2</code> would result in <code>1</code>. </div>
+            </div>
+            <div class="quiz-item">
+              <p class="quiz-question">3. Which operator has the highest precedence?</p>
+              <label class="option-container">A. +<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. -<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. *<input type="radio" name="q3" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. =<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> In the order of operations (PEMDAS), multiplication <code>*</code> is performed before addition <code>+</code> , subtraction <code>-</code> , or assignment <code>=</code> .</div>
+            </div>
+            <div class="quiz-item">
+              <p class="quiz-question">4. What is the output of the following code? <br><code>int x = 5; x++; cout << x;</code></p>
+              <label class="option-container">A. 4<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. 5<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. 6<input type="radio" name="q4" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. 7<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> The <code>++</code> is the increment operator, which increases the value of a variable by 1. Since <code>x</code> started at <code>5</code> , <code>x++</code> makes it <code>6</code> .</div>
+            </div>
+            <div class="quiz-item">
+              <p class="quiz-question">5. What is the result of this expression? <br><code>10 + 6 / 2</code></p>
+              <label class="option-container">A. 8<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. 13<input type="radio" name="q5" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">C. 16<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">D. 5<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> Because of operator precedence, division is performed before addition. First, <code>6 / 2 = 3, then 10 + 3 = 13</code>.</div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn-check-quiz" onclick="validateQuizModule3()">Check My Answers</button>
+              <div id="quiz-result"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-lg-12">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">BasicCode</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="credits">
+              Designed for CSC402 Programming 1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" id="closePopup">&times;</span>
+      <h3 id="popup-title"></h3>
+      <p id="popup-message"></p>
+    </div>
+  </div>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+<script>
+  AOS.init();
+
+  // --- 1. Test Run Scripts ---
+  function runSection(type) {
+    const outputMap = {
+      arith: `|a + b = 15| |a - b = 5| |a * b = 50| |a / b = 2| `,
+      incdec: `x++ = 10 | x = 11 | ++x = 12`
+    };
+
+    const output = document.getElementById('output-' + type);
+    output.style.display = 'block';
+    output.textContent = outputMap[type];
+  }
+
+  // --- 2. Precedence & Relational Logic ---
+  function simulatePrecedence() {
+    const a = parseInt(document.getElementById('precA').value) || 0;
+    const b = parseInt(document.getElementById('precB').value) || 0;
+    const c = parseInt(document.getElementById('precC').value) || 0;
+    
+    const step1 = b * c;
+    const finalResult = a + step1;
+
+    const output = document.getElementById('prec-text');
+    output.innerHTML = `
+      <p><span class="color-0">int</span> result = ${a} + ${b} * ${c};</p>
+      <p class="comment">// 1. Hierarchy: ${b} * ${c} = ${step1}</p>
+      <p class="comment">// 2. Final: ${a} + ${step1} = ${finalResult}</p>
+      <p class="color-1">Result: ${finalResult}</p>
+    `;
+  }
+
+  function simulateRelational() {
+    const x = parseInt(document.getElementById('relX').value) || 0;
+    const y = parseInt(document.getElementById('relY').value) || 0;
+
+    const eq = x == y ? 1 : 0;
+    const gt = x > y ? 1 : 0;
+    const lt = x < y ? 1 : 0;
+
+    const output = document.getElementById('rel-text');
+    output.innerHTML = `
+      <p><span class="color-2">${x} == ${y}</span> -> <span class="color-1">${eq} (${eq ? 'True' : 'False'})</span></p>
+      <p><span class="color-2">${x} > ${y}</span> -> <span class="color-1">${gt} (${gt ? 'True' : 'False'})</span></p>
+      <p><span class="color-2">${x} < ${y}</span> -> <span class="color-1">${lt} (${lt ? 'True' : 'False'})</span></p>
+    `;
+  }
+
+  // --- 3. Logical & Compound Logic ---
+  function runLogicalDemo() {
+    const output = document.getElementById('logical-output');
+    output.innerHTML = `
+      <p><span class="color-2">true && false</span> -> <span class="color-1">0 (False)</span></p>
+      <p><span class="color-2">true || false</span> -> <span class="color-1">1 (True)</span></p>
+      <p><span class="color-2">!true</span> -> <span class="color-1">0 (False)</span></p>
+    `;
+  }
+
+  function runCompoundDemo() {
+    const val = parseInt(document.getElementById('compoundInput').value) || 0;
+    const plusFive = val + 5;
+    const timesTwo = val * 2;
+    
+    const output = document.getElementById('compound-output');
+    output.innerHTML = `
+      <p><span class="color-0">int</span> x = ${val};</p>
+      <p><span class="color-2">x += 5;</span> <span class="comment">// x is now ${plusFive}</span></p>
+      <p><span class="color-2">x *= 2;</span> <span class="comment">// x is now ${timesTwo}</span></p>
+    `;
+  }
+
+  // --- 4. Quiz Logic (UNTOUCHED) ---
+  function validateQuizModule3() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+    let score = 0;
+    const totalQuestions = 5;
+    let allAnswered = true;
+
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        allAnswered = false;
+        break;
+      }
+    }
+
+    if (!allAnswered) {
+      alert("Please answer all questions before checking.");
+      return; 
+    }
+
+    const options = document.querySelectorAll('.option-container');
+    options.forEach(opt => opt.classList.remove('correct-answer', 'wrong-answer'));
+    document.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      const allInQuestion = form.querySelectorAll(`input[name="q${i}"]`);
+      const quizItem = allInQuestion[0].closest('.quiz-item');
+      const explanation = quizItem.querySelector('.explanation-text');
+
+      explanation.style.display = 'block';
+
+      allInQuestion.forEach(input => {
+        if (input.value === 'correct') {
+          input.parentElement.classList.add('correct-answer');
+        }
+      });
+
+      if (selected) {
+        if (selected.value === 'correct') {
+          score++;
+        } else {
+          selected.parentElement.classList.add('wrong-answer');
+        }
+      }
+    }
+
+    resultDiv.style.display = 'block';
+
+    if (score >= 3) {
+      resultDiv.className = 'score-success';
+      resultDiv.innerHTML = `
+        <h4>🎉 Congratulations!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You have mastered Module 3.</p>
+        <a href="module4.html" class="btn btn-success mt-2">Go to Module 4 ➡️</a>
+      `;
+      checkBtn.style.display = 'none';
+      completeQuizModule3(score);
+    } else {
+      resultDiv.className = 'score-warning';
+      resultDiv.innerHTML = `
+        <h4>😅 Almost there!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You need at least 3 to pass.</p>
+      `;
+      checkBtn.textContent = 'Try Again';
+      checkBtn.onclick = resetQuizModule3;
+    }
+
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function resetQuizModule3() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+
+    form.querySelectorAll('input[type="radio"]').forEach(input => (input.checked = false));
+    form.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+    form.querySelectorAll('.option-container').forEach(opt =>
+      opt.classList.remove('correct-answer', 'wrong-answer')
+    );
+
+    resultDiv.style.display = 'none';
+    checkBtn.textContent = 'Check My Answers';
+    checkBtn.style.display = 'inline-block'; 
+    checkBtn.onclick = validateQuizModule3; 
+
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // --- 5. Locking Logic ---
+  const popup = document.getElementById('popup');
+  const popupTitle = document.getElementById('popup-title');
+  const popupMessage = document.getElementById('popup-message');
+  const closePopup = document.getElementById('closePopup');
+
+  if (closePopup) {
+    closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+  }
+
+  function showPopup(title, message) {
+    if (popupTitle) popupTitle.textContent = title;
+    if (popupMessage) popupMessage.textContent = message;
+    if (popup) popup.classList.remove('hidden');
+  }
+
+  let module3Score = 0;
+  let module3Answered = false;
+
+  function completeQuizModule3(score) {
+    module3Answered = true;
+    module3Score = score;
+    localStorage.setItem('module3Answered', 'true');
+    localStorage.setItem('module3Score', score);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    module3Answered = localStorage.getItem('module3Answered') === 'true';
+    module3Score = parseInt(localStorage.getItem('module3Score')) || 0;
+
+    const linksToLock = document.querySelectorAll('#navmenu a, .btn-getstarted');
+
+    linksToLock.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      link.addEventListener('click', e => {
+        if (href.includes('index.html') || href.includes('module3.html') || href.includes('about.html')) return;
+
+        if (href.includes('module2')) {
+          if (parseInt(localStorage.getItem('module1Score')) < 3) {
+            e.preventDefault();
+            showPopup("Module 2 is locked", "Complete Module 1 with 3+ correct answers.");
+            return;
+          }
+        }
+
+        if (href.includes('module3')) {
+          if (parseInt(localStorage.getItem('module2Score')) < 3) {
+            e.preventDefault();
+            showPopup("Module 3 is locked", "Complete Module 2 with 3+ correct answers.");
+            return;
+          }
+        }
+
+        if (href.includes('module4')) {
+          if (module3Score < 3 || !module3Answered) {
+            e.preventDefault();
+            showPopup("Module Locked", "Please complete Module 3 quiz to unlock Module 4.");
+            return;
+          }
+        }
+
+        if (href.includes('assignment')) {
+          e.preventDefault();
+          showPopup("Assignment is locked", "Assignment is locked until all modules are completed.");
+          return;
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Module 4 - BasicCode</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&family=Raleway:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Reduce the white gap between the page title and the video section */
+    .page-title {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .section.py-5:first-of-type {
+      padding-top: 0.0rem !important;  /* reduce top space */
+    }
+    
+    /* --- Video Section Styling --- */
+    .video-side-container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      height: 100%;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-summary h3 {
+      color: #e3006e;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* --- UIVERSE CODE EDITOR CARDS --- */
+    .code-editor {
+      width: 100%;
+      background-color: #1d1e22;
+      box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 2px;
+      margin-bottom: 25px;
+    }
+
+    .header-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+    }
+
+    .title-card {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1.57px;
+      color: rgb(212 212 212);
+      text-transform: uppercase;
+    }
+
+    .icon-card {
+      width: 20px;
+      transition: .2s ease;
+    }
+
+    .editor-content {
+      margin: 0 15px 15px;
+      color: white;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+    }
+
+    .property { margin-left: 20px; display: block; margin-bottom: 4px; }
+    .color-0 { color: rgb(86 156 214); } 
+    .color-1 { color: rgb(182 206 168); } 
+    .color-2 { color: rgb(156 220 254); } 
+    .color-3 { color: rgb(207 146 120); } 
+    .comment { color: #6a9955; font-style: italic; }
+
+    /* --- General Layout --- */
+    .page-header-box {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      background: linear-gradient(to bottom, #f8fdff, #ffffff);
+    }
+
+    .notes-main-title {
+      font-weight: 800;
+      color: #e3006e;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      margin-top: 30px; /* Adjusted spacing */
+    }
+
+    .notes-main-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: #e3006e;
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+
+    .notes-heading {
+      color: #e3006e;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .detail-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    .quiz-container-inner { max-width: 600px; margin: 0 auto; }
+
+     /* --- Building Blocks (Data Types) --- */
+    .datatype-card {
+      background: #fff; border-radius: 15px; padding: 25px; height: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s;
+      border-top: 5px solid transparent;
+    }
+    .datatype-card:hover { transform: translateY(-5px); }
+    .dtype-int { border-color: #0d6efd; }
+    .dtype-float { border-color: #198754; }
+    .dtype-char { border-color: #ffc107; }
+    .dtype-bool { border-color: #dc3545; }
+    .dtype-string { border-color: #6610f2; }
+    .dtype-badge { display: inline-block; padding: 5px 10px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 10px; color: white;}
+
+    /* notes 4 styles */
+    .font-monospace { font-family: 'Fira Code', monospace; }
+    .text-accent { color: #e3006e; }
+    
+    /* Code and Terminal Styling */
+    .code-block {
+      background: #1d1e22; color: #abb2bf; padding: 20px; border-radius: 10px;
+      font-family: 'Fira Code', monospace; border-left: 5px solid #e37d00;
+      margin-bottom: 15px;
+    }
+    .output-box {
+      background: #0f1b19; color: #b200e3; padding: 15px; border-radius: 8px;
+      font-family: 'Fira Code', monospace; border: 1px solid #81e300;
+    }
+
+    /* Cards */
+    .feature-card {
+      background: #fff; border-radius: 15px; padding: 25px; height: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #00e340;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-5px); }
+    
+    .escape-tag {
+      background: #e6fffa; color: #2200e3; padding: 2px 8px;
+      border-radius: 5px; font-weight: bold; font-family: 'Fira Code';
+    }
+    .datatype-card { background: #fff; border-radius: 15px; padding: 25px; height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid #2c7a7b; }
+    .manipulator-badge { display: inline-block; padding: 4px 12px; border-radius: 50px; background: #e6fffa; color: #2c7a7b; font-weight: bold; margin-bottom: 10px; font-size: 0.85rem; }
+    .output-box { background: #202425; color: #27c93f; padding: 15px; border-radius: 8px; font-family: 'Fira Code'; margin-top: 10px; border: 1px solid #333; }
+  
+    /* Quiz Specifics */
+    .quiz-section { 
+      padding-top: 50px; 
+      padding-bottom: 80px; 
+      background: #ffffff; 
+      border-top: 1px solid #eee; 
+      border-bottom: 1px solid #eee;
+      margin-top: 0; 
+    }
+    
+    .quiz-item { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid #e3006e; max-width: 600px; margin-left: auto; margin-right: auto;}
+    .quiz-question { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .option-container { display: block; position: relative; padding: 10px 15px 10px 45px; margin-bottom: 10px; cursor: pointer; border: 1px solid #eee; border-radius: 5px; transition: 0.3s; }
+    .option-container:hover { background: #f8f9fa; border-color: #e3006e; }
+    .option-container input { position: absolute; opacity: 0; cursor: pointer; }
+    .checkmark { position: absolute; top: 15px; left: 15px; height: 18px; width: 18px; background-color: #eee; border-radius: 50%; }
+    .option-container input:checked ~ .checkmark { background-color: #e3006e; }
+    .option-container.correct-answer { background-color: #d4edda !important; border-color: #c3e6cb !important; }
+    .option-container.wrong-answer { background-color: #f8d7da !important; border-color: #f5c6cb !important; }
+    
+    .explanation-text { display: none; margin-top: 15px; padding: 15px; background: #e9f7ef; border-radius: 8px; font-size: 0.95rem; color: #155724; border-left: 3px solid #28a745; }
+
+    .btn-check-quiz { background: #e3006e; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+    .btn-check-quiz:hover { background: #0056b3; transform: translateY(-2px); }
+
+    #quiz-result { 
+      margin-top: 30px; 
+      padding: 25px; 
+      border-radius: 12px; 
+      display: none; 
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+    }
+    .score-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; box-shadow: 0 4px 15px rgba(21, 87, 36, 0.1); }
+    .score-warning { background-color: #fff3cd; color: #856404; border-color: #ffeeba; box-shadow: 0 4px 15px rgba(133, 100, 4, 0.1); }
+    
+    /*LOCK STYLE*/
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup.hidden { display: none; }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .close-btn { float: right; font-size: 20px; cursor: pointer; }
+    /* Download Button - Pink Style */
+.btn-download {
+  display: inline-block;
+  background-color: #fff;
+  color: #e3006e; /* Module 4 Pink */
+  border: 2px solid #e3006e;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(227, 0, 110, 0.1);
+}
+
+.btn-download:hover {
+  background-color: #e3006e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(227, 0, 110, 0.2);
+}
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">BasicCode</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">🏠Home</a></li>
+          <li><a href="module1.html">📘Module 1</a></li>
+          <li><a href="module2.html">📗Module 2</a></li>
+          <li><a href="module3.html" >📙Module 3</a></li>
+          <li><a href="module4.html" class="active">📕Module 4</a></li> 
+          <li><a href="about.html">ℹ️About</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="assignment.html">⭐Assignment</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Mastering Module 4</h1>
+              <p class="mb-0">Output & String Handlings</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="row align-items-center video-side-container">
+          <div class="col-lg-7">
+            <video controls>
+              <source src="assets/video/module4_video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="col-lg-5 video-summary ps-lg-5 mt-4 mt-lg-0">
+  <h3><i class="bi bi-journal-text me-2"></i>Video Overview</h3>
+  <p>
+    Master <strong>Output and String Handling</strong> in C++! 
+    Learn to display text using the <strong>iostream</strong> library and <strong>cout</strong>. 
+    We cover <strong>String Literals</strong>, concatenating data with the <strong>insertion operator (<<)</strong>, 
+    and formatting layouts using <strong>endl</strong>.
+  </p>
+  
+  <div class="alert alert-info d-inline-block mb-3">
+    <i class="bi bi-info-circle-fill me-2"></i> <strong>Goal:</strong> Displaying & Formatting Output.
+  </div>
+
+  <div class="mt-3">
+    <p class="mb-2 small fw-bold" style="color: #e3006e;">
+      🎉 You're almost at the finish line! Want the full notes?
+    </p>
+    <a href="assets/notes/Topic3notes.pdf" download class="btn-download">
+      <i class="bi bi-file-earmark-pdf-fill me-2"></i> Download PDF Notes
+    </a>
+  </div>
+
+</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container text-center">
+      <h2 class="notes-main-title">Notes</h2>
+    </div>
+      
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="video-side-container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h4 class="notes-heading" style="color: #e3006e; font-weight: 700; margin-bottom: 15px;">1. Visualizing Input vs Output</h4>
+              <p class="detail-text">
+                Confused by <code>&lt;&lt;</code> and <code>&gt;&gt;</code>? Just follow the direction of the arrows!
+              </p>
+              <ul class="list-unstyled detail-text">
+                <li class="mb-3">
+                  <span class="badge bg-primary">Output (Push)</span><br>
+                  Arrows point <strong>towards</strong> the output. Pushing data out to the screen.
+                </li>
+                <li>
+                  <span class="badge bg-success">Input (Pull)</span><br>
+                  Arrows point <strong>towards</strong> the variable. Pulling data in from the keyboard.
+                </li>
+              </ul>
+            </div>
+            
+            <div class="col-lg-6 text-center">
+              <div class="p-4 rounded" style="background: #f8f9fa; border: 2px dashed #ddd;">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                  <div class="p-2 border rounded bg-white fw-bold">cout</div>
+                  <div class="mx-3 text-primary fw-bold fs-4 animate-push">&lt;&lt; &lt;&lt; &lt;&lt;</div>
+                  <div class="p-2 border rounded bg-light">"Hello"</div>
+                </div>
+                <small class="text-muted d-block mb-4">"Pushing 'Hello' to Cout"</small>
+
+                <div class="d-flex align-items-center justify-content-center">
+                  <div class="p-2 border rounded bg-white fw-bold">cin</div>
+                  <div class="mx-3 text-success fw-bold fs-4 animate-pull">&gt;&gt; &gt;&gt; &gt;&gt;</div>
+                  <div class="p-2 border rounded bg-light">x</div>
+                </div>
+                <small class="text-muted d-block mt-2">"Pulling keyboard input into x"</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    @keyframes pushArrows {
+      0% { opacity: 0.2; transform: translateX(5px); }
+      50% { opacity: 1; transform: translateX(-5px); }
+      100% { opacity: 0.2; transform: translateX(5px); }
+    }
+    .animate-push { animation: pushArrows 1.5s infinite; }
+
+    @keyframes pullArrows {
+      0% { opacity: 0.2; transform: translateX(-5px); }
+      50% { opacity: 1; transform: translateX(5px); }
+      100% { opacity: 0.2; transform: translateX(-5px); }
+    }
+    .animate-pull { animation: pullArrows 1.5s infinite; }
+    </style>
+
+    <section class="section">
+        <div class="container" data-aos="fade-up">
+          <div class="video-side-container">
+            <div class="text-center mb-5">
+              <h4 class="notes-heading">2. Output & Escape Sequences</h4>
+            </div>
+          
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="feature-card">
+                  <h4>The <code>cout</code> Object</h4>
+                  <p>Used with the insertion operator <code><<</code> to display variables and strings. </p>
+                  
+                  <h5 class="mt-4">Formatting with Escape Sequences</h5>
+                  <p>Special characters that control the cursor layout:</p>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><span class="escape-tag">\n</span> Newline: Cursor moves to the next line.</li>
+                    <li class="mb-2"><span class="escape-tag">\t</span> Tab: Cursor moves to the next tab stop.</li>
+                    <li class="mb-2"><span class="escape-tag">\a</span> Alert: Triggers a system beep.</li>
+                    <li class="mb-2"><span class="escape-tag">\"</span> Double Quote: Displays <code>"</code>.</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-lg-6">
+                <h5>Try it Yourself</h5>
+                <div class="code-editor-container" style="background: #1d1e22; border-radius: 10px; padding: 15px; border-left: 5px solid #e37d00;">
+                  <textarea id="codeIn1" class="form-control font-monospace" style="background: transparent; color: #abb2bf; border: none; resize: none; outline: none; width: 100%; height: 80px;">
+cout << "Product:\tLaptop\n";
+cout << "Status:"\tIn Stock"" "\a";</textarea>
+                  
+                  <div class="text-end mt-2">
+                    <button class="btn btn-sm" style="background: #e37d00; color: white; border-radius: 20px;" onclick="runExample1()">
+                      <i class="bi bi-play-fill"></i> Run Code
+                    </button>
+                  </div>
+                </div>
+
+                <h5 class="mt-4">Console Output</h5>
+                <div id="output1" class="output-box" style="min-height: 60px; transition: all 0.3s ease;">
+                  <span style="color: #666; font-style: italic;">// Click Run to see output...</span>
+                </div>
+              </div>
+            </div>
+          </div> </div>
+      </section>
+
+      <script>
+      function runExample1() {
+          const outputBox = document.getElementById('output1');
+          const codeArea = document.getElementById('codeIn1').value;
+          
+          outputBox.innerHTML = '<span style="color: #888;">Compiling...</span>';
+          
+          setTimeout(() => {
+              let processedOutput = codeArea
+                  .replace(/cout << /g, "")
+                  .replace(/ << endl;/g, "\n")
+                  .replace(/;/g, "")
+                  .replace(/"/g, "")
+                  .replace(/\\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;")
+                  .replace(/\\n/g, "<br>")
+                  .replace(/\\a/g, " <small style='color:#e37d00'></small>");
+
+              outputBox.innerHTML = processedOutput;
+              outputBox.style.borderColor = "#27c93f";
+              setTimeout(() => { outputBox.style.borderColor = "#333"; }, 1000);
+          }, 400);
+      }
+      </script>
+
+      <section class="section">
+        <div class="container" data-aos="fade-up">
+          <div class="video-side-container">
+            <div class="text-center mb-5">
+              <h4 class="notes-heading">3. Built-in (Library) Functions</h4>
+            </div>
+          
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="datatype-card">
+                  <span class="dtype-badge bg-primary text-white p-1 rounded mb-2 d-inline-block">cmath</span>
+                  <h4>Math Functions</h4>
+                  <p>For complex calculations beyond + or -.</p>
+                  <ul class="list-unstyled text-muted">
+                    <li><code>pow(2, 3)</code> &rarr; 8.0</li>
+                    <li><code>sqrt(16)</code> &rarr; 4.0</li>
+                    <li><code>abs(-5)</code> &rarr; 5</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="datatype-card">
+                  <span class="dtype-badge bg-success text-white p-1 rounded mb-2 d-inline-block">string</span>
+                  <h4>String Manipulation</h4>
+                  <p>Handling text effectively.</p>
+                  <ul class="list-unstyled text-muted">
+                    <li><code>str.length()</code> : Size of string</li>
+                    <li><code>str.substr(p, n)</code> : Extract part</li>
+                    <li><code>str.find('x')</code> : Search index</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="datatype-card">
+                  <span class="dtype-badge bg-warning text-dark p-1 rounded mb-2 d-inline-block">iomanip</span>
+                  <h4>Input/Output Manipulation</h4>
+                  <p>Required for <code>setw</code>, <code>setprecision</code>, and <code>fixed</code>.</p>
+                </div>
+              </div>
+            </div>
+          </div> </div>
+      </section>
+
+      <section class="section">
+        <div class="container" data-aos="fade-up">
+          <div class="video-side-container">
+            <div class="text-center mb-5">
+              <h4 class="notes-heading">4. Formatted Output</h4>
+            </div>
+          
+            <div class="row g-4">
+              <div class="col-lg-4">
+                <div class="p-4 bg-white rounded shadow-sm border-top border-4 border-info">
+                  <span class="manipulator-badge">setprecision(n)</span>
+                  <h5>Precision</h5>
+                  <p>Sets the number of decimal places to display. Best used with <code>fixed</code>.</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="p-4 bg-white rounded shadow-sm border-top border-4 border-info">
+                  <span class="manipulator-badge">setw(n)</span>
+                  <h5>Field Width</h5>
+                  <p>Spaces the next output into a field of <em>n</em> characters. Good for tables.</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="p-4 bg-white rounded shadow-sm border-top border-4 border-info">
+                  <span class="manipulator-badge">fixed / showpoint</span>
+                  <h5>Force Decimals</h5>
+                  <p>Forces the decimal point and trailing zeros to be shown on the screen.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-lg-6">
+                <div class="feature-card h-100">
+                  <h5 class="text-accent mb-3"><i class="bi bi-arrows-expand me-2"></i>Adjust Column Widths</h5>
+                  <p class="small text-muted">Change the <code>setw(n)</code> values to see how the alignment shifts:</p>
+                  
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <label class="form-label small fw-bold">Label Width (setw):</label>
+                      <input type="number" id="setwLabel" class="form-control form-control-sm" value="10" min="1" max="30">
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-bold">Value Width (setw):</label>
+                      <input type="number" id="setwValue" class="form-control form-control-sm" value="8" min="1" max="30">
+                    </div>
+                  </div>
+
+                  <div class="code-block" style="font-size: 0.85rem; border-left-color: #0dcaf0;">
+                    <span style="color:#5c6370;">// The output is right-aligned within the width</span><br>
+                    cout << fixed << setprecision(2);<br>
+                    cout << setw(<span id="displayW1" class="text-info fw-bold">10</span>) << "Price:" 
+                         << setw(<span id="displayW2" class="text-info fw-bold">8</span>) << 19.90 << endl;<br>
+                    cout << setw(<span id="displayW1_b" class="text-info fw-bold">10</span>) << "Tax:" 
+                         << setw(<span id="displayW2_b" class="text-info fw-bold">8</span>) << 1.20 << endl;
+                  </div>
+                  
+                  <div class="text-end">
+                    <button class="btn btn-info btn-sm text-white" style="border-radius: 20px;" onclick="runSetwDemo()">
+                      <i class="bi bi-play-fill"></i> Execute Formatting
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <h5 class="mt-4 mt-lg-0">Console Output</h5>
+                <div id="setwOutputBox" class="output-box" style="min-height: 200px; font-family: 'Fira Code', monospace; overflow-x: auto;">
+                  <div style="color: #444; font-size: 0.7rem; margin-bottom: 5px; border-bottom: 1px dashed #444; display: inline-block;">
+                    COLUMN RULER (1 character per dot)
+                  </div>
+                  <pre id="setwContent" style="margin: 0; color: #27c93f;">          Price:    19.90
+            Tax:     1.20</pre>
+                </div>
+                <p class="small text-muted mt-2">
+                  <i class="bi bi-lightbulb me-1"></i> <strong>Pro Tip:</strong> If the <code>setw</code> number is smaller than the word (e.g., <code>setw(2)</code> for "Price"), C++ will ignore the width and print the whole word anyway!
+                </p>
+              </div>
+            </div>
+          </div> </div>
+      </section>
+
+      <script>
+      function runSetwDemo() {
+          const w1 = parseInt(document.getElementById('setwLabel').value) || 1;
+          const w2 = parseInt(document.getElementById('setwValue').value) || 1;
+          
+          document.getElementById('displayW1').innerText = w1;
+          document.getElementById('displayW1_b').innerText = w1;
+          document.getElementById('displayW2').innerText = w2;
+          document.getElementById('displayW2_b').innerText = w2;
+
+          const priceVal = "19.90";
+          const taxVal = "1.20";
+          const priceLab = "Price:";
+          const taxLab = "Tax:";
+
+          const line1 = priceLab.padStart(w1, ' ') + priceVal.padStart(w2, ' ');
+          const line2 = taxLab.padStart(w1, ' ') + taxVal.padStart(w2, ' ');
+
+          const content = document.getElementById('setwContent');
+          const box = document.getElementById('setwOutputBox');
+
+          content.style.opacity = "0";
+          setTimeout(() => {
+              content.innerHTML = line1 + "\n" + line2;
+              content.style.opacity = "1";
+              box.style.borderColor = "#0dcaf0";
+              setTimeout(() => { box.style.borderColor = "#333"; }, 400);
+          }, 200);
+      }
+      </script>
+
+<section class="section">
+  <div class="container" data-aos="fade-up">
+    <div class="video-side-container">
+      <div class="row align-items-center">
+        
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h4 class="section-header">Advanced Formatting: <code>setfill</code></h4>
+          <p class="detail-text">
+            While <code>setw</code> creates empty padding, <strong><code>setfill</code></strong> fills that padding with a specific character.
+          </p>
+          <div class="p-3 bg-light rounded border mb-3">
+            <h6 class="text-dark font-monospace mb-2">Syntax:</h6>
+            <div class="code-editor p-2" style="height: auto; margin-bottom: 0;">
+              <code>cout << setfill('.') << setw(20) << "Chapter 1";</code>
+            </div>
+            <small class="text-muted d-block mt-2">
+              <strong>Result:</strong> <code>...........Chapter 1</code>
+            </small>
+          </div>
+          <p class="detail-text small">
+            <i class="bi bi-info-circle-fill text-info"></i> <strong>Why use it?</strong> It's essential for creating readable tables of contents, receipts, or aligning financial data.
+          </p>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="demo-box">
+            <h5 class="mb-3">Receipt Printer Simulator</h5>
+            
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-6">
+                <label class="small fw-bold text-muted">Fill Character:</label>
+                <select id="fillChar" class="form-select form-select-sm" onchange="runFillDemo()">
+                  <option value=".">Dots (.)</option>
+                  <option value="-">Dashes (-)</option>
+                  <option value="*">Stars (*)</option>
+                  <option value="_">Underscore (_)</option>
+                  <option value=" ">Empty (Default)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="small fw-bold text-muted">Width (setw):</label>
+                <input type="range" id="fillWidth" class="form-range" min="15" max="35" value="25" oninput="runFillDemo()">
+              </div>
+            </div>
+
+            <div class="code-editor" style="height: auto; text-align: left; padding: 15px;">
+              <code style="white-space: pre-wrap;">cout << left << setfill('<span id="fillCharDisplay" class="text-warning">.</span>') << setw(<span id="fillWidthDisplay" class="text-info">25</span>) << "Coffee";
+cout << "$4.50";</code>
+            </div>
+
+            <div class="output-box mt-2" style="background: #fff; color: #333; border: 2px dashed #ccc; font-family: 'Courier New', monospace; font-weight: bold;">
+              <div id="fillOutput">Coffee...................$4.50</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function runFillDemo() {
+  const char = document.getElementById('fillChar').value;
+  const width = document.getElementById('fillWidth').value;
+  
+  // Update code display
+  document.getElementById('fillCharDisplay').innerText = char;
+  document.getElementById('fillWidthDisplay').innerText = width;
+
+  // Logic: "Coffee" is 6 chars. Padding = width - 6.
+  const paddingCount = Math.max(0, width - 6);
+  const padding = char.repeat(paddingCount);
+  
+  document.getElementById('fillOutput').innerText = "Coffee" + padding + "$4.50";
+}
+</script>
+
+
+      <section class="section">
+        <div class="container" data-aos="fade-up">
+          <div class="video-side-container">
+            <div class="text-center mb-5">
+              <h4 class="notes-heading">5. String Handling & Math Functions</h4>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="feature-card">
+                  <h4>String Functions <code>&lt;cstring&gt;</code></h4>
+                  <p>Manage character arrays and strings safely:</p>
+                  <ul>
+                    <li><strong>strlen(str):</strong> Returns the number of characters.</li>
+                    <li><strong>strncpy(dest, src, n):</strong> Copies <em>n</em> characters to prevent buffer overflow.</li>
+                    <li><strong>strcmp(s1, s2):</strong> Compares strings; returns 0 if they match.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <h5>Practical Code Snippet</h5>
+                <div class="code-block">
+                  char szSource[] = "Copy this!";<br>
+                  char szDest[50];<br>
+                  <span style="color:#5c6370;">// Safely copy 49 chars (leaving room for null)</span><br>
+                  strncpy(szDest, szSource, 49);<br>
+                  szDest[49] = 0; <br>
+                  cout << "Length: " << strlen(szDest);
+                </div>
+                <div class="output-box">
+                  Copy this!<br>
+                  Length: 10
+                </div>
+              </div>
+            </div>
+          </div> </div>
+      </section>
+
+      <section class="section">
+  <div class="container" data-aos="fade-up">
+    <div class="video-side-container">
+      <div class="text-center mb-4">
+        <h4 class="section-header">Specific String Class Functions</h4>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="feature-card h-100">
+            <h5 class="text-accent mb-3"><i class="bi bi-tools me-2"></i>Useful Members</h5>
+            <ul class="list-unstyled detail-text">
+              <li class="mb-3">
+                <span class="badge bg-secondary mb-1">Concatenation (+)</span><br>
+                Joins strings together.<br>
+                <code>string s = "Hello" + s2;</code>
+              </li>
+              <li class="mb-3">
+                <span class="badge bg-warning text-dark mb-1">getline(cin, var)</span><br>
+                Reads a <strong>full line</strong> of text (including spaces).<br>
+                <em>VS</em> <code>cin >> var</code> which stops at the first space!
+              </li>
+              <li>
+                <span class="badge bg-danger mb-1">Modifiers</span><br>
+                <code>str.erase(pos, len)</code>: Deletes chars.<br>
+                <code>str.insert(pos, "text")</code>: Adds chars at a position.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="demo-box">
+            <h5 class="mb-3">The "Space" Problem</h5>
+            <p class="small text-muted">Try typing "<strong>John Smith</strong>" below and see the difference.</p>
+            
+            <div class="input-group mb-3">
+              <input type="text" id="nameInput" class="form-control" placeholder="Type full name...">
+              <button class="btn btn-outline-primary" onclick="testInput('cin')">Run cin >></button>
+              <button class="btn btn-outline-success" onclick="testInput('getline')">Run getline()</button>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="p-2 border rounded bg-white">
+                  <small class="d-block text-muted fw-bold">Simulation Code:</small>
+                  <code id="inputCodeDisplay" class="small text-primary">Waiting...</code>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-2 border rounded bg-black text-success">
+                  <small class="d-block text-muted fw-bold">Memory Value:</small>
+                  <samp id="inputMemoryResult">?</samp>
+                </div>
+              </div>
+            </div>
+            
+            <div id="inputFeedback" class="alert alert-light mt-3 small text-start border-0">
+              <i class="bi bi-info-circle"></i> Result explanation will appear here.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function testInput(method) {
+  const text = document.getElementById('nameInput').value;
+  if(!text) return;
+
+  const codeDisplay = document.getElementById('inputCodeDisplay');
+  const memoryResult = document.getElementById('inputMemoryResult');
+  const feedback = document.getElementById('inputFeedback');
+
+  if (method === 'cin') {
+    codeDisplay.innerText = "cin >> name;";
+    // cin behavior: stops at first space
+    const firstWord = text.split(' ')[0];
+    memoryResult.innerText = `"${firstWord}"`;
+    feedback.innerHTML = `<strong class="text-danger">Data Loss!</strong> <code>cin</code> stopped reading at the space. The rest of the name remained in the buffer.`;
+  } else {
+    codeDisplay.innerText = "getline(cin, name);";
+    // getline behavior: takes everything
+    memoryResult.innerText = `"${text}"`;
+    feedback.innerHTML = `<strong class="text-success">Success!</strong> <code>getline</code> read the entire line, including spaces.`;
+  }
+}
+</script>
+
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-container-inner">
+          <div class="section-title text-center" data-aos="fade-up">
+            <h2 style="color: #e3006e;">Module 4 Knowledge Check</h2>
+            <p>Answer the following multiple-choice questions to test your understanding.</p>
+          </div>
+
+          <form id="quizForm" data-aos="fade-up" data-aos-delay="100">
+            <div class="quiz-item">
+              <p class="quiz-question">1. Which statement is used to display output in C++?</p>
+              <label class="option-container">A. cin<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. print<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. cout<input type="radio" name="q1" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. output<input type="radio" name="q1" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> <code>cout</code> (character output) is the standard object used with the insertion operator <code>(<<) </code> to print data to the console.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">2. What does the escape sequence \n do?</p>
+              <label class="option-container">A. Inserts a tab<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. Inserts a space<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. Moves output to a new line<input type="radio" name="q2" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. Ends the program<input type="radio" name="q2" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong>The <code>\n</code> character is a newline character that instructs the cursor to move to the beginning of the next line. </div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">3. Which header file is required for formatted output functions?</p>
+              <label class="option-container">A. iostream<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. string<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. cmath<input type="radio" name="q3" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">D. iomanip<input type="radio" name="q3" value="correct"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> The <code>iomanip</code> header stands for "input-output manipulation" and is necessary for using functions like <code>setprecision</code> or <code>setw</code>.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">4. What is the purpose of setprecision(2)?</p>
+              <label class="option-container">A. Sets output width<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. Rounds integer values<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. Controls number of decimal places<input type="radio" name="q4" value="correct"><span class="checkmark"></span></label>
+              <label class="option-container">D. Changes data type<input type="radio" name="q4" value="wrong"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> This manipulator is used to set the number of significant digits or decimal places (when used with <code>fixed</code>) displayed for floating-point numbers.</div>
+            </div>
+
+            <div class="quiz-item">
+              <p class="quiz-question">5. Which manipulator forces trailing zeros to be displayed?</p>
+              <label class="option-container">A. setw<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">B. setfill<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">C. fixed<input type="radio" name="q5" value="wrong"><span class="checkmark"></span></label>
+              <label class="option-container">D. showpoint<input type="radio" name="q5" value="correct"><span class="checkmark"></span></label>
+              <div class="explanation-text"><strong>Explanation:</strong> Even if a number is a whole number (like 5.00), <code>showpoint</code> ensures the decimal point and trailing zeros are shown in the output.</div>
+            </div>
+
+            <div class="text-center">
+              <button type="button" class="btn-check-quiz" onclick="validateQuizModule4()">Check My Answers</button>
+              <div id="quiz-result"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-lg-12">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">BasicCode</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="credits">
+              Designed for CSC402 Programming 1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" id="closePopup">&times;</span>
+      <h3 id="popup-title"></h3>
+      <p id="popup-message"></p>
+    </div>
+  </div>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+<script>
+  AOS.init();
+
+  // ===== QUIZ VALIDATION =====
+  function validateQuizModule4() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+    let score = 0;
+    const totalQuestions = 5;
+    let allAnswered = true;
+
+    // 1. Check if all questions are answered
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        allAnswered = false;
+        break;
+      }
+    }
+
+    if (!allAnswered) {
+      alert("Please answer all questions before checking.");
+      return; 
+    }
+
+    // 2. Reset visuals
+    const options = document.querySelectorAll('.option-container');
+    options.forEach(opt => opt.classList.remove('correct-answer', 'wrong-answer'));
+    document.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+
+    // 3. Calculate Score & Show Answers
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      const allInQuestion = form.querySelectorAll(`input[name="q${i}"]`);
+      const quizItem = allInQuestion[0].closest('.quiz-item');
+      const explanation = quizItem.querySelector('.explanation-text');
+
+      explanation.style.display = 'block';
+
+      allInQuestion.forEach(input => {
+        if (input.value === 'correct') {
+          input.parentElement.classList.add('correct-answer');
+        }
+      });
+
+      if (selected) {
+        if (selected.value === 'correct') {
+          score++;
+        } else {
+          selected.parentElement.classList.add('wrong-answer');
+        }
+      }
+    }
+
+    resultDiv.style.display = 'block';
+
+    if (score >= 3) {
+      resultDiv.className = 'score-success';
+      resultDiv.innerHTML = `
+        <h4>🎉 Congratulations!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You have mastered Module 4.</p>
+        <a href="assignment.html" class="btn btn-success mt-2">Go to Assignment ➡️</a>
+      `;
+      checkBtn.style.display = 'none';
+      completeQuizModule4(score);
+    } else {
+      resultDiv.className = 'score-warning';
+      resultDiv.innerHTML = `
+        <h4>😅 Almost there!</h4>
+        <p>You scored ${score} out of ${totalQuestions}. You need at least 3 to pass.</p>
+      `;
+      checkBtn.textContent = 'Try Again';
+      checkBtn.onclick = resetQuizModule4;
+    }
+
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ===== QUIZ RESET FUNCTION =====
+  function resetQuizModule4() {
+    const form = document.getElementById('quizForm');
+    const resultDiv = document.getElementById('quiz-result');
+    const checkBtn = document.querySelector('.btn-check-quiz');
+
+    form.querySelectorAll('input[type="radio"]').forEach(input => (input.checked = false));
+    form.querySelectorAll('.explanation-text').forEach(el => (el.style.display = 'none'));
+    form.querySelectorAll('.option-container').forEach(opt =>
+      opt.classList.remove('correct-answer', 'wrong-answer')
+    );
+
+    resultDiv.style.display = 'none';
+    checkBtn.textContent = 'Check My Answers';
+    checkBtn.style.display = 'inline-block';
+    checkBtn.onclick = validateQuizModule4;
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ===== POPUP SETUP =====
+  const popup = document.getElementById('popup');
+  const popupTitle = document.getElementById('popup-title');
+  const popupMessage = document.getElementById('popup-message');
+  const closePopup = document.getElementById('closePopup');
+
+  if (closePopup) {
+    closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+  }
+
+  function showPopup(title, message) {
+    if (popupTitle) popupTitle.textContent = title;
+    if (popupMessage) popupMessage.textContent = message;
+    if (popup) popup.classList.remove('hidden');
+  }
+
+  // ===== LOCKING LOGIC WITH STORAGE =====
+  let module4Score = 0;
+  let module4Answered = false;
+
+  function completeQuizModule4(score) {
+    module4Answered = true;
+    module4Score = score;
+    localStorage.setItem('module4Answered', 'true');
+    localStorage.setItem('module4Score', score);
+  }
+
+  // ===== NAVIGATION LOCKING =====
+  document.addEventListener('DOMContentLoaded', () => {
+    module4Answered = localStorage.getItem('module4Answered') === 'true';
+    module4Score = parseInt(localStorage.getItem('module4Score')) || 0;
+
+    const linksToLock = document.querySelectorAll('#navmenu a, .btn-getstarted');
+
+    linksToLock.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      link.addEventListener('click', e => {
+        if (href.includes('index.html') || href.includes('module4.html') || href.includes('about.html')) return;
+
+        if (href.includes('module2') && parseInt(localStorage.getItem('module1Score')) < 3) {
+          e.preventDefault();
+          showPopup("Module 2 is locked", "Complete Module 1 with 3+ correct answers.");
+          return;
+        }
+
+        if (href.includes('module3') && parseInt(localStorage.getItem('module2Score')) < 3) {
+          e.preventDefault();
+          showPopup("Module 3 is locked", "Complete Module 2 with 3+ correct answers.");
+          return;
+        }
+
+        if (href.includes('module4') && parseInt(localStorage.getItem('module3Score')) < 3) {
+          e.preventDefault();
+          showPopup("Module 4 is locked", "Complete Module 3 with 3+ correct answers.");
+          return;
+        }
+
+        if (href.includes('assignment')) {
+          if (module4Score < 3 || !module4Answered) {
+            e.preventDefault();
+            showPopup("Assignment is locked", "Please complete Module 4 quiz to unlock Assignment.");
+            return;
+          }
+        }
+
+        window.location.href = href;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
